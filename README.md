@@ -1,4 +1,4 @@
-# Islamic Wedding Invitation — Web Platform
+# Ayan Wedding Invitation — Web Platform
 
 **Couple:** Mohd. Ayan Siddiqui & Sumaira Khan  
 **Status:** `Task 01: Project Discovery & Planning (COMPLETED)` — **NO APPLICATION CODE WRITTEN**  
@@ -8,7 +8,7 @@
 
 ## 1. Project Overview
 
-This repository contains the comprehensive product discovery, technical architecture, design system audit, verification matrices, and delivery checklists for the personalized **Islamic Wedding Invitation Website** for **Mohd. Ayan Siddiqui** and **Sumaira Khan** (celebrated on 20–22 November 2026).
+This repository contains the comprehensive product discovery, technical architecture, design system audit, verification matrices, and delivery checklists for the personalized **Ayan Wedding Invitation Website** for **Mohd. Ayan Siddiqui** and **Sumaira Khan** (celebrated on 20–22 November 2026).
 
 The goal of this project is to translate the creative direction established in Google Stitch project `1730933329537106473` into an ultra-reliable, mobile-first, ceremonial web invitation that family, relatives, and distinguished guests can access worldwide across diverse network conditions.
 
