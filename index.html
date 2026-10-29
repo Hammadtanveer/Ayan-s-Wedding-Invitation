@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#fef9f1"/>
   <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com https://lh3.googleusercontent.com https://images.unsplash.com; img-src 'self' data: https://lh3.googleusercontent.com https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; media-src 'self' https:; connect-src 'self';"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https: file: data: blob:; img-src * data: blob: file: https:; style-src 'self' 'unsafe-inline' https: file:; font-src 'self' https: data: file:; media-src * 'self' file: data: blob: https:; connect-src * 'self' file:;"/>
   <title>Ayan Wedding Invitation — Mohd. Ayan Siddiqui &amp; Sumaira Khan</title>
   <meta name="description" content="Ayan Wedding Invitation — Mohd. Ayan Siddiqui &amp; Sumaira Khan. 20–22 November 2026."/>
 
@@ -544,6 +544,12 @@
   </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-tertiary-fixed islamic-lattice-bg">
+
+  <!-- Global Ambient Wedding Audio (Bismillah) -->
+  <audio id="weddingAmbientAudio" loop preload="auto" playsinline>
+    <source src="assets/audio/bismillah.mp3" type="audio/mpeg">
+    <source src="assets/audio/sitar-yaman.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- Global Floating Petals (Full Viewport across side panels and cards) -->
   <div id="petal-canvas" aria-hidden="true" class="fixed inset-0 pointer-events-none overflow-hidden z-30"></div>
@@ -1768,11 +1774,12 @@
           if (!audioElement.seeking) updateAudioUI(false);
         });
 
-        // Autoplay Attempt 1: Immediate on page load
+        // Autoplay Attempt 1: Immediate on script & on page load
         startAudio(false).catch(() => {});
+        window.addEventListener('load', () => startAudio(false).catch(() => {}));
 
-        // Autoplay Attempt 2: On first user interaction anywhere (scroll, touch, click, keydown)
-        const autoEvents = ['pointerdown', 'touchstart', 'click', 'scroll', 'keydown'];
+        // Autoplay Attempt 2: On first user gesture anywhere (touch, click, scroll, wheel, key)
+        const autoEvents = ['pointerdown', 'mousedown', 'touchstart', 'click', 'scroll', 'wheel', 'keydown'];
         function triggerFirstInteraction() {
           if (!isPlaying) {
             startAudio(false).then((started) => {
@@ -1785,6 +1792,14 @@
         autoEvents.forEach(e => {
           window.addEventListener(e, triggerFirstInteraction, { capture: true, passive: true });
         });
+
+        // Tap to Open Button: explicit sound trigger
+        const tapToOpenBtn = document.getElementById('tapToOpenBtn');
+        if (tapToOpenBtn) {
+          tapToOpenBtn.addEventListener('click', () => {
+            if (!isPlaying) startAudio(true);
+          });
+        }
 
         // Manual Header Toggle Button
         if (musicBtn) {
@@ -1837,10 +1852,6 @@
       }
     })();
   </script>
-  <!-- Ambient Wedding Audio (Sitar Raag Yaman) -->
-  <audio id="weddingAmbientAudio" loop preload="auto">
-    <source src="assets/audio/bismillah.mp3" type="audio/mpeg">
-    <source src="assets/audio/sitar-yaman.mp3" type="audio/mpeg">
-  </audio>
+
 </body>
 </html>
