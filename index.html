@@ -146,15 +146,22 @@
     /* Scroll Section Layout */
     .wedding-section {
       width: 100%;
-      min-height: calc(100vh - 4rem);
+      min-height: calc(100vh - 4.5rem);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
       scroll-margin-top: 4.5rem;
-      padding-top: 1.5rem;
-      padding-bottom: 2.5rem;
+      padding-top: 2rem;
+      padding-bottom: 3.5rem;
+    }
+    @media (max-width: 640px) {
+      .wedding-section {
+        min-height: auto;
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
+      }
     }
 
     /* Scroll Reveal Animations (IntersectionObserver triggered) */
@@ -889,79 +896,120 @@
          SECTION 2 — COUPLE (User Exact Code)
          ======================================================================= -->
     <section id="couple" class="wedding-section px-margin-mobile" data-section-index="1" data-section-title="Couple">
-      <div class="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-16 -right-12 w-72 h-72 rounded-full bg-primary-fixed/25 blur-3xl pointer-events-none"></div>
+      <div class="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-secondary-fixed/20 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-16 -right-12 w-72 h-72 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+
+      <!-- Top Sacred Header & Quranic Ayah -->
+      <div class="w-full flex flex-col items-center text-center mb-3 anim-stagger-1 z-10">
+        <div class="flex items-center justify-center gap-2 mb-1.5 opacity-80">
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="font-label-sm text-[11px] uppercase tracking-[0.25em] text-secondary font-bold">The Holy Union</span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+        </div>
+        <p class="font-arabic text-primary text-xl sm:text-2xl leading-relaxed select-none my-0.5" dir="rtl" style="font-family: 'Amiri', serif;">
+          وَمِنْ كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ
+        </p>
+        <p class="font-headline-sm text-[13px] text-tertiary italic tracking-wide">
+          "And of everything We created pairs, that you may remember" &bull; 51:49
+        </p>
+      </div>
 
       <!-- Keepsake Container -->
-      <div class="scroll-reveal w-full relative bg-surface-container-low rounded-2xl gold-foil-card px-space-md py-space-xl flex flex-col items-center text-center overflow-hidden tactile-card">
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]">
-          <svg class="w-80 h-80 text-primary rotate-gentle" fill="currentColor" viewBox="0 0 100 100">
-            <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38"></polygon>
-            <polygon points="50,7 60,39 93,50 60,61 50,93 40,61 7,50 40,39" transform="rotate(45 50 50)"></polygon>
+      <div class="scroll-reveal w-full max-w-sm relative bg-surface-container-low rounded-2xl gold-foil-card px-space-md py-space-lg sm:py-space-xl flex flex-col items-center text-center overflow-hidden tactile-card shadow-[0_12px_40px_-8px_rgba(74,53,43,0.12)]">
+        <!-- Floating Corner Arabesques -->
+        <div class="absolute top-3 left-3 w-8 h-8 pointer-events-none text-primary-container/60">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
+            <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute top-3 right-3 w-8 h-8 pointer-events-none text-primary-container/60 scale-x-[-1]">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
+            <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-3 left-3 w-8 h-8 pointer-events-none text-primary-container/60 scale-y-[-1]">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
+            <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-3 right-3 w-8 h-8 pointer-events-none text-primary-container/60 scale-[-1]">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
+            <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
           </svg>
         </div>
 
-        <!-- Corner Botanicals -->
-        <svg class="absolute top-3 left-3 w-12 h-12 text-primary-container/40 pointer-events-none" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 48 48"><path d="M4,4 C14,14 18,28 14,42"></path><path d="M4,4 C14,14 28,18 42,14"></path><path d="M12,12 C16,9 21,11 20,16 C19,21 14,19 12,12 Z" fill="currentColor" fill-opacity="0.15"></path></svg>
-        <svg class="absolute top-3 right-3 w-12 h-12 text-primary-container/40 pointer-events-none -scale-x-100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 48 48"><path d="M4,4 C14,14 18,28 14,42"></path><path d="M4,4 C14,14 28,18 42,14"></path><path d="M12,12 C16,9 21,11 20,16 C19,21 14,19 12,12 Z" fill="currentColor" fill-opacity="0.15"></path></svg>
-        <svg class="absolute bottom-3 left-3 w-12 h-12 text-primary-container/40 pointer-events-none -scale-y-100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 48 48"><path d="M4,4 C14,14 18,28 14,42"></path><path d="M4,4 C14,14 28,18 42,14"></path><path d="M12,12 C16,9 21,11 20,16 C19,21 14,19 12,12 Z" fill="currentColor" fill-opacity="0.15"></path></svg>
-        <svg class="absolute bottom-3 right-3 w-12 h-12 text-primary-container/40 pointer-events-none scale-[-1]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 48 48"><path d="M4,4 C14,14 18,28 14,42"></path><path d="M4,4 C14,14 28,18 42,14"></path><path d="M12,12 C16,9 21,11 20,16 C19,21 14,19 12,12 Z" fill="currentColor" fill-opacity="0.15"></path></svg>
-
-        <!-- Sacred Invocation Header -->
-        <div class="relative z-10 flex flex-col items-center space-y-space-xs mb-space-lg max-w-xs anim-stagger-1">
-          <div class="flex items-center justify-center space-x-2 text-primary-container mb-1">
-            <span class="w-6 h-[1px] bg-primary-container/40 inline-block"></span>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2L14.4 8.6L21 11L14.4 13.4L12 20L9.6 13.4L3 11L9.6 8.6L12 2Z"></path></svg>
-            <span class="w-6 h-[1px] bg-primary-container/40 inline-block"></span>
-          </div>
-          <p class="text-primary text-[23px] leading-[38px] font-normal tracking-wide text-center antialiased" dir="rtl" lang="ar" style="font-family: 'Amiri', 'EB Garamond', serif;">
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </p>
-          <p class="font-headline-sm text-headline-sm text-tertiary italic text-center max-w-[260px] leading-relaxed">
-            In the name of Allah, the Most Beneficial and Merciful
-          </p>
+        <!-- 8-Pointed Star Watermark -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+          <svg class="w-80 h-80 text-primary rotate-gentle" fill="currentColor" viewBox="0 0 100 100">
+            <polygon points="50,0 62,35 98,25 78,58 100,82 65,85 50,100 35,85 0,82 22,58 2,25 38,35"/>
+          </svg>
         </div>
 
-        <div class="relative z-10 w-16 h-0.5 bg-primary-fixed rounded-full my-space-xs anim-stagger-2"></div>
-
-        <div class="relative z-10 my-space-md anim-stagger-2">
-          <p class="font-body-md text-body-md text-on-tertiary-container tracking-wider uppercase text-center max-w-[240px]">
-            You are cordially invited to celebrate the union of
-          </p>
-        </div>
-
-        <!-- Couple Names -->
-        <div class="relative z-10 my-space-sm flex flex-col items-center justify-center space-y-1 anim-stagger-3">
-          <h2 class="font-display-script-mobile text-display-script-mobile text-on-tertiary-container tracking-wide font-normal italic transition-transform duration-300 hover:scale-[1.02]">
-            Ayan Siddiqui
-          </h2>
-          <div class="relative my-0.5 flex items-center justify-center">
-            <span class="font-display-script-mobile text-display-script-mobile text-primary leading-none font-normal italic opacity-90 select-none">
-              &amp;
-            </span>
-          </div>
-          <h2 class="font-display-script-mobile text-display-script-mobile text-on-tertiary-container tracking-wide font-normal italic transition-transform duration-300 hover:scale-[1.02]">
-            Sumaira Khan
-          </h2>
-        </div>
-
-        <!-- Date Badge -->
-        <div class="relative z-10 mt-space-lg flex flex-col items-center anim-stagger-4">
-          <div class="inline-flex items-center justify-center px-space-md py-space-xs rounded-full bg-surface-container shadow-sm">
-            <span class="material-symbols-outlined text-[15px] text-primary mr-2" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
-            <p class="font-label-lg text-label-lg text-on-surface-variant tracking-widest uppercase">
-              20 November 2026
+        <div class="relative z-10 flex flex-col items-center w-full">
+          <!-- Bismillah Calligraphy -->
+          <div class="flex items-center justify-center w-full mb-space-xs text-primary anim-stagger-1">
+            <p class="font-arabic text-2xl sm:text-3xl text-primary font-normal leading-relaxed" dir="rtl" style="font-family: 'Amiri', serif;">
+              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
           </div>
-          <div class="flex items-center justify-center space-x-1.5 text-primary-container/60 mt-space-md">
+          <p class="font-headline-sm text-[14px] text-tertiary italic mb-space-md anim-stagger-1 tracking-wide">
+            In the name of Allah, the Most Beneficial and Merciful
+          </p>
+
+          <div class="flex items-center justify-center gap-3 w-32 my-1 opacity-70 anim-stagger-2">
+            <span class="h-[0.75px] flex-1 bg-primary-container"></span>
+            <span class="text-secondary text-[8px]">◆</span>
+            <span class="h-[0.75px] flex-1 bg-primary-container"></span>
+          </div>
+
+          <p class="font-label-sm text-[11px] uppercase tracking-[0.2em] text-secondary font-bold mb-space-sm anim-stagger-2">
+            You are cordially invited to celebrate the union of
+          </p>
+
+          <!-- Names Block -->
+          <div class="my-space-sm flex flex-col items-center anim-stagger-3">
+            <h2 class="font-headline-lg-mobile text-[32px] sm:text-[36px] text-on-surface font-semibold tracking-wide" style="font-family: 'EB Garamond', serif;">
+              Ayan Siddiqui
+            </h2>
+            <div class="my-1 flex items-center justify-center">
+              <span class="font-headline-sm text-secondary italic text-2xl font-normal">&amp;</span>
+            </div>
+            <h2 class="font-headline-lg-mobile text-[32px] sm:text-[36px] text-on-surface font-semibold tracking-wide" style="font-family: 'EB Garamond', serif;">
+              Sumaira Khan
+            </h2>
+          </div>
+
+          <!-- Date Pill -->
+          <div class="my-space-md inline-flex items-center gap-2 px-space-md py-1.5 rounded-full bg-surface-container border border-primary-container/40 shadow-sm anim-stagger-4">
+            <span class="material-symbols-outlined text-[15px] text-secondary">calendar_today</span>
+            <span class="font-label-md text-label-md text-on-surface uppercase tracking-wider font-semibold">20 November 2026</span>
+          </div>
+
+          <div class="flex items-center justify-center gap-3 w-32 mt-space-xs text-primary/40 anim-stagger-4">
             <span class="w-8 h-[1px] bg-primary-container/30 inline-block"></span>
-            <span class="material-symbols-outlined text-[13px]">local_florist</span>
+            <span class="material-symbols-outlined text-[13px] text-secondary">local_florist</span>
             <span class="w-8 h-[1px] bg-primary-container/30 inline-block"></span>
           </div>
         </div>
       </div>
 
-      
+      <!-- Bottom Poetic Blessing Ribbon -->
+      <div class="flex flex-col items-center text-center mt-3 anim-stagger-4 z-10">
+        <div class="flex items-center justify-center gap-3 w-44 mb-1 opacity-75">
+          <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
+          <span class="text-secondary text-[10px]">❦</span>
+          <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
+        </div>
+        <p class="font-headline-sm text-[13px] text-on-surface-variant italic max-w-xs">
+          "May Allah bless their journey with harmony, joy, and eternal barakah"
+        </p>
+      </div>
     </section>
 
     <!-- =======================================================================
@@ -1124,70 +1172,71 @@
          SECTION 4 — VENUE LOCATION / MOMENTS (User Exact Code)
          ======================================================================= -->
     <section id="venue-location" class="wedding-section px-gutter-mobile" data-section-index="3" data-section-title="Venue Location">
-      <div class="scroll-reveal w-full flex flex-col items-center">
-        <!-- Ornamental Flourish -->
-        <div class="flex items-center justify-center pt-space-md pb-space-sm opacity-60 anim-stagger-1">
-          <svg class="w-8 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 32 16">
-            <path d="M0 8h12m8 0h12M16 2l2 6-2 6-2-6 2-6z" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+      
+      <!-- Top Sacred Header -->
+      <div class="w-full flex flex-col items-center text-center mb-3 anim-stagger-1 z-10">
+        <div class="flex items-center justify-center gap-2 mb-1 opacity-80">
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="font-label-sm text-[11px] uppercase tracking-[0.25em] text-secondary font-bold">Cherished Memories</span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="w-8 h-[1px] bg-primary-container"></span>
         </div>
-        <!-- Page Header -->
-        <div class="text-center mb-space-lg anim-stagger-2">
-          <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-wide">
-            Moments
-          </h2>
-        </div>
-        <!-- 2x2 Soft Tactile Moments Gallery -->
-        <div class="grid grid-cols-2 gap-3.5 w-full anim-stagger-3">
-          <!-- Item 1: Henna Decorated Hands -->
-          <div class="group relative flex flex-col bg-surface-container-low rounded-xl p-2 shadow-sm transition-all duration-300 hover:shadow-md active:scale-[0.99] tactile-card">
-            <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-surface-container shadow-inner">
-              <img alt="Intricate henna mehndi details on bride hands" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWTHVsLGFN1RWpMUoZfAwix3sQ9oPoeKbKeCI2z22EEGlXxF0FSzjgSCJUA4PGKJ7OA-lnF8kBetWcfdv4tsM0gbit942pRukJuOHnSnxsHptN5eD-5Vy1rNKjGuwRdH2yvCsSZcJwAs6l2ViKbJScarzDKijBdPP1VxgyXiLsrbzye86zWv-bhFRwwtmeyP-E0BQzq3xmHaplXTvd-hCoBX7WJYmgHYiu1Tx2_BgYw-B5QCVFASAL"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
-            </div>
-            <div class="flex items-center justify-center pt-2 pb-0.5">
-              <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest opacity-75">Rasm</span>
-            </div>
+        <h2 class="font-headline-lg-mobile text-[28px] text-primary font-normal" style="font-family: 'EB Garamond', serif;">
+          Moments of Grace &amp; Heritage
+        </h2>
+        <p class="font-headline-sm text-[13px] text-tertiary italic max-w-xs text-center mt-0.5">
+          Capturing timeless elegance, ancestral craftsmanship, and joyous union
+        </p>
+      </div>
+
+      <div class="scroll-reveal w-full max-w-sm flex flex-col items-center">
+        <!-- 2x2 Photo Grid -->
+        <div class="grid grid-cols-2 gap-space-sm w-full my-space-xs anim-stagger-2">
+          <!-- 1. Mehndi -->
+          <div class="aspect-square bg-surface-container rounded-xl overflow-hidden flex flex-col items-center justify-between p-2 text-center photo-frame-gold group relative">
+            <img alt="Intricate Henna Mehndi Artwork" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"/>
+            <span class="absolute bottom-2 inset-x-2 py-1 rounded bg-surface/90 backdrop-blur-sm font-label-md text-[11px] text-on-surface uppercase tracking-widest font-semibold shadow-sm">
+              Rasm
+            </span>
           </div>
-          <!-- Item 2: Sherwani Detail -->
-          <div class="group relative flex flex-col bg-surface-container-low rounded-xl p-2 shadow-sm transition-all duration-300 hover:shadow-md active:scale-[0.99] tactile-card">
-            <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-surface-container shadow-inner">
-              <img alt="Groom ivory raw silk sherwani with zardozi embroidery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzunbTrP2plNfe5vnTNNsPLfzb6-5L90icpRW4z993CD2a1i2NKcXVaq97_b_MR2dQ7kDxkIisLavxpIRJ71_6mM8QQTUxeQy-RBWml7v_jDnizWicRrJYgZJFeF3NIO0Hu8J6_V7XV4TTUYCtRHjnmt6sC68pg41M6cj5Mftg8xJPPfpcfACmaMijAkxJTupIwZPxACk9Cwaqtub_Z4fvhVrA9GANGal7IaCNJGsd8EM57qBqwOL"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
-            </div>
-            <div class="flex items-center justify-center pt-2 pb-0.5">
-              <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest opacity-75">Nikah</span>
-            </div>
+
+          <!-- 2. Sherwani -->
+          <div class="aspect-square bg-surface-container rounded-xl overflow-hidden flex flex-col items-center justify-between p-2 text-center photo-frame-gold group relative">
+            <img alt="Silk Sherwani Zardozi Embroidery" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=600&q=80"/>
+            <span class="absolute bottom-2 inset-x-2 py-1 rounded bg-surface/90 backdrop-blur-sm font-label-md text-[11px] text-on-surface uppercase tracking-widest font-semibold shadow-sm">
+              Nikah
+            </span>
           </div>
-          <!-- Item 3: Mosque Archway -->
-          <div class="group relative flex flex-col bg-surface-container-low rounded-xl p-2 shadow-sm transition-all duration-300 hover:shadow-md active:scale-[0.99] tactile-card">
-            <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-surface-container shadow-inner">
-              <img alt="Carved Mughal sandstone arches into courtyard pavilion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6mSvOkHaa2MQFt4Hx7yju4OuyBvZeselndhIUuK5Q6eRJgmcu6Fxd-H_s0ZwgLwtKP0ZIgxcAGWB6FnCemo7Nm3lURz3sSIrdLbeEuqVsyBvfwT8ueOgZHadzecGGB8sDYv-tOJWdx-bgDl29KPRoIdoNrB9N7oZ_8uU6mox7HAMf1ZSGR8fZZgxdO8VrPbcojh8SEhsJqiqEN17LSPXRMHC-GrGDH9zxhJ2PoJTHAxqOvuyZxqRW"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
-            </div>
-            <div class="flex items-center justify-center pt-2 pb-0.5">
-              <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest opacity-75">Muntazir</span>
-            </div>
+
+          <!-- 3. Courtyard -->
+          <div class="aspect-square bg-surface-container rounded-xl overflow-hidden flex flex-col items-center justify-between p-2 text-center photo-frame-gold group relative">
+            <img alt="Historic Royal Palace Archways" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80"/>
+            <span class="absolute bottom-2 inset-x-2 py-1 rounded bg-surface/90 backdrop-blur-sm font-label-md text-[11px] text-on-surface uppercase tracking-widest font-semibold shadow-sm">
+              Muntazir
+            </span>
           </div>
-          <!-- Item 4: Roses with Gold Rings -->
-          <div class="group relative flex flex-col bg-surface-container-low rounded-xl p-2 shadow-sm transition-all duration-300 hover:shadow-md active:scale-[0.99] tactile-card">
-            <div class="relative w-full aspect-square overflow-hidden rounded-lg bg-surface-container shadow-inner">
-              <img alt="Gold wedding rings nested in blooming garden roses" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Bjkeqlfz0DVcJLgomaZvDKklFPVp7EFj0gVq4wqmC8pWRZAKtUDeTv-PwJPIDlXv3IK2bGecSn5M_rjzadeAgICt5ohmRtb92E-Hcxy_aqnaVP3vm5FtUAiTWEQNwoeE_Hj5UCZaeiJR4tWmmuyGgV9_wvNs_bG3qNU23i94DszRf3yzPTajqn4A5zAOjtWmlm_loNSYChYOiNu-nOXXoKV0pSjf_Vrf_cTJwG3f6xYoXQoikhMj"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
-            </div>
-            <div class="flex items-center justify-center pt-2 pb-0.5">
-              <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest opacity-75">Paiman</span>
-            </div>
+
+          <!-- 4. Bouquet -->
+          <div class="aspect-square bg-surface-container rounded-xl overflow-hidden flex flex-col items-center justify-between p-2 text-center photo-frame-gold group relative">
+            <img alt="Garden Peach Roses and Silk Letter" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80"/>
+            <span class="absolute bottom-2 inset-x-2 py-1 rounded bg-surface/90 backdrop-blur-sm font-label-md text-[11px] text-on-surface uppercase tracking-widest font-semibold shadow-sm">
+              Paiman
+            </span>
           </div>
         </div>
-        <!-- Bottom Vignette -->
-        <div class="mt-space-lg mx-auto w-full max-w-xs flex flex-col items-center anim-stagger-4">
-          <div class="flex items-center gap-3 w-full justify-center opacity-40">
-            <div class="h-[1px] flex-1 bg-primary-container"></div>
-            <span class="font-headline-sm text-headline-sm text-primary italic">✤</span>
-            <div class="h-[1px] flex-1 bg-primary-container"></div>
-          </div>
+      </div>
+
+      <!-- Bottom Poetic Ribbon -->
+      <div class="flex flex-col items-center text-center mt-3 anim-stagger-3 z-10">
+        <div class="flex items-center justify-center gap-3 w-44 mb-1 opacity-75">
+          <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
+          <span class="text-secondary text-[10px]">✤</span>
+          <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
         </div>
+        <p class="font-headline-sm text-[13px] text-on-surface-variant italic max-w-xs">
+          "Every glance a treasured story, every step an enduring prayer"
+        </p>
       </div>
     </section>
 
@@ -1195,48 +1244,66 @@
          SECTION 5 — TRAVEL STAY / ANCESTRAL BLESSINGS (User Exact Code)
          ======================================================================= -->
     <section id="travel-stay" class="wedding-section px-gutter-mobile" data-section-index="4" data-section-title="Travel Stay">
-      <div class="scroll-reveal w-full max-w-sm bg-surface-container-low rounded-xl shadow-sm p-space-lg flex flex-col items-center text-center overflow-hidden tactile-card relative">
+      
+      <!-- Top Sacred Header -->
+      <div class="w-full flex flex-col items-center text-center mb-3 anim-stagger-1 z-10">
+        <div class="flex items-center justify-center gap-2 mb-1 opacity-80">
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="font-label-sm text-[11px] uppercase tracking-[0.25em] text-secondary font-bold">Ancestral Blessings</span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+        </div>
+        <p class="font-arabic text-primary text-xl sm:text-2xl leading-relaxed select-none my-0.5" dir="rtl" style="font-family: 'Amiri', serif;">
+          رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ
+        </p>
+        <p class="font-headline-sm text-[13px] text-tertiary italic tracking-wide">
+          "Our Lord, grant us from our spouses comfort to our eyes" &bull; 25:74
+        </p>
+      </div>
+
+      <div class="scroll-reveal w-full max-w-sm bg-surface-container-low rounded-2xl gold-foil-card p-space-md sm:p-space-lg flex flex-col items-center text-center overflow-hidden tactile-card shadow-[0_12px_40px_-8px_rgba(74,53,43,0.12)] relative">
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
           <svg class="w-72 h-72 text-primary rotate-gentle" fill="currentColor" viewBox="0 0 100 100">
             <path d="M50 0 L58 35 L85 15 L65 42 L100 50 L65 58 L85 85 L58 65 L50 100 L42 65 L15 85 L35 58 L0 50 L35 42 L15 15 L42 35 Z"></path>
           </svg>
         </div>
         <div class="relative z-10 flex flex-col items-center w-full">
-          <div class="flex items-center justify-center w-full mb-space-md text-primary opacity-60 anim-stagger-1">
-            <svg class="w-6 h-6 mr-space-xs" fill="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center justify-center w-full mb-space-xs text-primary opacity-70 anim-stagger-1">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C12.5 5 15 7.5 18 8C15 8.5 12.5 11 12 14C11.5 11 9 8.5 6 8C9 7.5 11.5 5 12 2Z"></path>
               <path d="M12 10C12.5 13 15 15.5 18 16C15 16.5 12.5 19 12 22C11.5 19 9 16.5 6 16C9 15.5 11.5 13 12 10Z" opacity="0.5"></path>
             </svg>
           </div>
-          <p class="font-headline-sm text-headline-sm text-tertiary italic mb-space-lg tracking-normal anim-stagger-1">
+          <p class="font-headline-sm text-[14px] text-tertiary italic mb-space-md tracking-wide anim-stagger-1">
             In the name of Allah, the Most Beneficial and Merciful
           </p>
-          <div class="w-12 h-px bg-primary-container opacity-40 mb-space-lg anim-stagger-2"></div>
-          <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-lg leading-relaxed anim-stagger-2">
+          <div class="w-12 h-px bg-primary-container opacity-40 mb-space-md anim-stagger-2"></div>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-md leading-relaxed anim-stagger-2">
             Late Mrs. and Mr. Haji Iftakhar Ahmad request the pleasure of your company on the auspicious occasion of the Wedding Ceremony of their grandson
           </p>
           <div class="my-space-xs flex flex-col items-center anim-stagger-3">
-            <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-normal tracking-wide">
+            <h2 class="font-headline-lg-mobile text-[26px] sm:text-[28px] text-on-surface font-semibold tracking-wide">
               Mohd. Ayan Siddiqui
             </h2>
-            <p class="font-body-sm text-body-sm text-tertiary mt-space-xs">
+            <p class="font-body-sm text-body-sm text-tertiary mt-1">
               son of Mrs. and Mr. Haji Iqtadar Ahmad
             </p>
           </div>
-          <div class="my-space-md flex items-center justify-center anim-stagger-3">
+          <div class="my-space-xs flex items-center justify-center anim-stagger-3">
             <span class="font-headline-sm text-headline-sm text-primary italic lowercase">
               weds
             </span>
           </div>
           <div class="my-space-xs flex flex-col items-center anim-stagger-4">
-            <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-normal tracking-wide">
+            <h2 class="font-headline-lg-mobile text-[26px] sm:text-[28px] text-on-surface font-semibold tracking-wide">
               Sumaira Khan
             </h2>
-            <p class="font-body-sm text-body-sm text-tertiary mt-space-xs max-w-xs">
+            <p class="font-body-sm text-body-sm text-tertiary mt-1 max-w-xs">
               daughter of Mrs. and Mr. Mujahid Ali Khan, Hasanpur, Distt. Amroha
             </p>
           </div>
-          <div class="w-12 h-px bg-primary-container opacity-40 mt-space-lg mb-space-md anim-stagger-4"></div>
+          <div class="w-12 h-px bg-primary-container opacity-40 mt-space-md mb-space-xs anim-stagger-4"></div>
           <div class="flex items-center justify-center text-primary opacity-60 anim-stagger-4">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="2.5"></circle>
@@ -1245,79 +1312,112 @@
           </div>
         </div>
       </div>
+
+      <!-- Bottom Poetic Ribbon -->
+      <div class="flex flex-col items-center text-center mt-3 anim-stagger-4 z-10">
+        <div class="flex items-center justify-center gap-3 w-44 mb-1 opacity-75">
+          <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
+          <span class="text-secondary text-[10px]">❦</span>
+          <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
+        </div>
+        <p class="font-headline-sm text-[13px] text-on-surface-variant italic max-w-xs">
+          "Honouring the legacy and enduring blessings of our ancestors"
+        </p>
+      </div>
     </section>
 
     <!-- =======================================================================
          SECTION 6 — ADD TO CALENDAR & COUNTDOWN (User Exact Code)
          ======================================================================= -->
     <section id="add-to-calendar" class="wedding-section px-margin-mobile" data-section-index="5" data-section-title="Add To Calendar">
-      <div class="scroll-reveal w-full relative">
-        <!-- Background Watermark -->
-        <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.04]">
-          <svg class="w-96 h-96 text-primary rotate-gentle" fill="currentColor" viewBox="0 0 100 100">
-            <path d="M50 0 L58 35 L93 21 L65 50 L93 79 L58 65 L50 100 L42 65 L7 79 L35 50 L7 21 L42 35 Z"></path>
-            <circle cx="50" cy="50" fill="none" r="18" stroke="currentColor" stroke-width="2"></circle>
-          </svg>
+      
+      <!-- Top Sacred Header -->
+      <div class="w-full flex flex-col items-center text-center mb-3 anim-stagger-1 z-10">
+        <div class="flex items-center justify-center gap-2 mb-1 opacity-80">
+          <span class="w-8 h-[1px] bg-primary-container"></span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="font-label-sm text-[11px] uppercase tracking-[0.25em] text-secondary font-bold">Awaiting The Day</span>
+          <span class="text-secondary text-[10px]">✦</span>
+          <span class="w-8 h-[1px] bg-primary-container"></span>
         </div>
+        <h2 class="font-headline-lg-mobile text-[28px] text-primary font-normal" style="font-family: 'EB Garamond', serif;">
+          The Celebration Approaches
+        </h2>
+        <p class="font-headline-sm text-[13px] text-tertiary italic tracking-wide">
+          With joyous hearts, counting every blessed moment until we gather
+        </p>
+      </div>
 
-        <div class="relative w-full rounded-xl bg-surface-container shadow-[0_4px_20px_-2px_rgba(74,53,43,0.05),0_2px_6px_-1px_rgba(74,53,43,0.03)] p-space-lg flex flex-col items-center text-center tactile-card">
-          <span class="font-headline-sm text-headline-sm text-on-surface-variant tracking-wide anim-stagger-1" lang="ar" dir="rtl" style="font-family: 'Amiri', serif;">
-            إن شاء الله
+      <div class="scroll-reveal w-full max-w-sm relative">
+        <div class="relative w-full rounded-2xl bg-surface-container gold-foil-card p-space-md sm:p-space-lg flex flex-col items-center text-center tactile-card shadow-[0_12px_40px_-8px_rgba(74,53,43,0.12)]">
+          <span class="font-headline-sm text-2xl text-on-surface-variant tracking-wide anim-stagger-1" lang="ar" dir="rtl" style="font-family: 'Amiri', serif;">
+            إِنْ شَاءَ اللَّهُ
           </span>
-          <div class="flex items-center justify-center space-x-2 my-space-sm opacity-60 anim-stagger-1">
+          <div class="flex items-center justify-center space-x-2 my-space-xs opacity-60 anim-stagger-1">
             <span class="w-8 h-[1px] bg-primary-container"></span>
             <span class="material-symbols-outlined text-[12px] text-primary">spa</span>
             <span class="w-8 h-[1px] bg-primary-container"></span>
           </div>
-          <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-space-lg anim-stagger-2">
+          <h2 class="font-headline-lg-mobile text-[26px] text-on-surface mb-space-md anim-stagger-2">
             Counting the days
           </h2>
 
-          <!-- 4 Peach Countdown Boxes with Dynamic Flip Pulse -->
-          <div class="grid grid-cols-4 gap-space-xs w-full mb-space-lg anim-stagger-2" role="timer" aria-live="polite">
-            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-space-xs flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(74,53,43,0.06)] aspect-square transition-transform">
-              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1" id="countdown-days">22</span>
-              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Days</span>
+          <!-- 4 Countdown Blocks with Flip Pulse -->
+          <div class="grid grid-cols-4 gap-2 w-full mb-space-md anim-stagger-2" role="timer" aria-live="polite">
+            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-2 flex flex-col items-center justify-center shadow-sm aspect-square transition-transform">
+              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1 font-semibold" id="countdown-days">21</span>
+              <span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Days</span>
             </div>
-            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-space-xs flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(74,53,43,0.06)] aspect-square transition-transform">
-              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1" id="countdown-hours">10</span>
-              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Hours</span>
+            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-2 flex flex-col items-center justify-center shadow-sm aspect-square transition-transform">
+              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1 font-semibold" id="countdown-hours">06</span>
+              <span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Hours</span>
             </div>
-            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-space-xs flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(74,53,43,0.06)] aspect-square transition-transform">
-              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1" id="countdown-minutes">45</span>
-              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Minutes</span>
+            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-2 flex flex-col items-center justify-center shadow-sm aspect-square transition-transform">
+              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1 font-semibold" id="countdown-minutes">24</span>
+              <span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Minutes</span>
             </div>
-            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-space-xs flex flex-col items-center justify-center shadow-[0_4px_14px_rgba(74,53,43,0.06)] aspect-square transition-transform">
-              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1" id="countdown-seconds">20</span>
-              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Seconds</span>
+            <div class="bg-tertiary-fixed/90 border border-primary-container/40 rounded-xl p-2 flex flex-col items-center justify-center shadow-sm aspect-square transition-transform">
+              <span class="font-headline-md text-headline-md text-on-surface leading-none mb-1 font-semibold" id="countdown-seconds">08</span>
+              <span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Seconds</span>
             </div>
           </div>
 
-          <!-- Editorial Accent Image -->
-          <div class="w-full h-36 rounded-lg overflow-hidden mb-space-lg shadow-sm anim-stagger-3 group">
-            <img alt="Romantic florals in amber cream tones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDalN6jdNhzakDEKmccdAvsk3RIfpwWTB2fEyHAB-086VwcKNcObRqpXM2u9A-cQYVPUF6JpHfmceO1-iSq2I6vw8gFS61b6zyQeApwKyI3XC0LWAg3ZMkDp9J3zdJghJv-JT2mk5UgH-73iu5alp8DWsiiGOxumiwZF9oZawvDGG-EqVtSXmVOF698IaMLdy44YcgJ2qcx9hn0aC1AYZJt0psQ01iNv-h-bnmM1Xe2xt0Uwd_uKxFI"/>
+          <!-- Quranic Ayah Banner -->
+          <div class="w-full relative rounded-xl overflow-hidden mb-space-md shadow-sm anim-stagger-3 border border-primary-container/30">
+            <img alt="Wedding Decor" class="w-full h-32 object-cover" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"/>
           </div>
 
-          <div class="flex items-center justify-center space-x-3 mb-space-md opacity-40 anim-stagger-3">
-            <span class="w-12 h-[1px] bg-primary-container"></span>
-            <span class="material-symbols-outlined text-[10px] text-primary">circle</span>
-            <span class="w-12 h-[1px] bg-primary-container"></span>
+          <div class="flex items-center justify-center space-x-2 my-space-xs opacity-40 anim-stagger-3">
+            <span class="w-8 h-[1px] bg-primary-container"></span>
+            <span class="w-1.5 h-1.5 rounded-full border border-primary"></span>
+            <span class="w-8 h-[1px] bg-primary-container"></span>
           </div>
 
-          <!-- Quranic Verse Quote -->
-          <blockquote class="font-headline-sm text-headline-sm italic text-on-surface px-space-xs mb-space-lg leading-relaxed anim-stagger-4">
+          <blockquote class="font-headline-sm text-[14px] text-on-surface italic max-w-xs mb-space-xs leading-relaxed anim-stagger-3">
             “And He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.”
-            <cite class="block not-italic font-label-md text-label-md text-on-surface-variant mt-space-sm uppercase tracking-widest">
-              Surah Ar-Rum 30:21
-            </cite>
           </blockquote>
+          <cite class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest font-semibold not-italic mb-space-md anim-stagger-3">
+            Surah Ar-Rum 30:21
+          </cite>
 
-          <!-- Add To Calendar CTA Button -->
-          <button id="addToCalBtn" class="btn-pressable w-full py-3.5 px-space-lg rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg shadow-[0_8px_20px_-4px_rgba(142,77,49,0.3)] flex items-center justify-center space-x-2 anim-stagger-4" type="button">
-            <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+          <!-- Add to Calendar Button -->
+          <button id="addToCalBtn" type="button" class="btn-royal-cta w-full py-3.5 px-space-md rounded-full text-on-secondary font-label-md uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 anim-stagger-4">
+            <span class="material-symbols-outlined text-[17px]">calendar_today</span>
             <span>Add to calendar</span>
           </button>
         </div>
+      </div>
+
+      <!-- Bottom Poetic Ribbon -->
+      <div class="flex flex-col items-center text-center mt-3 anim-stagger-4 z-10">
+        <div class="flex items-center justify-center gap-3 w-44 mb-1 opacity-75">
+          <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
+          <span class="text-secondary text-[10px]">✦</span>
+          <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
+        </div>
+        <p class="font-headline-sm text-[13px] text-on-surface-variant italic max-w-xs">
+          "Mark your calendar to celebrate our joyous union on 20–22 November 2026"
+        </p>
       </div>
     </section>
 
