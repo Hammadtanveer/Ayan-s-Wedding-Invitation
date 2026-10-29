@@ -110,10 +110,10 @@ const WEDDING_CONFIG = {
   // Ambient Audio Configuration
   audio: {
     // Approved audio file is NOT yet supplied or selected by the family
-    assetUrl: "assets/audio/sitar-yaman.mp3",
+    assetUrl: "assets/audio/bismillah.mp3",
     isApproved: true,
-    title: "Shehnai & Sitar Harmony",
-    subtext: "Acoustic Raag"
+    title: "Bismillah",
+    subtext: "Salim-Sulaiman"
   },
 
   // Native Share Configuration
