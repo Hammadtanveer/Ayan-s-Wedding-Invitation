@@ -48,19 +48,15 @@
    * @returns {string|null}
    */
   function generateWhatsAppUrl(attendeeCount, config = (typeof window !== 'undefined' ? window.WEDDING_CONFIG : null)) {
-    if (!config || !config.rsvp) return null;
-    const rawPhone = config.rsvp.phoneNumber;
-    const isVerified = config.rsvp.isPhoneVerified;
-
-    if (!rawPhone || !isVerified) {
-      return null;
-    }
-
+    const rawPhone = config && config.rsvp ? config.rsvp.phoneNumber : null;
     const normalizedPhone = normalizePhoneNumber(rawPhone);
-    if (!normalizedPhone) return null;
-
     const message = buildRsvpMessage(attendeeCount, config);
-    return `https://wa.me/${normalizedPhone}?text=${encodeURIComponent(message)}`;
+
+    if (normalizedPhone) {
+      return `https://wa.me/${normalizedPhone}?text=${encodeURIComponent(message)}`;
+    }
+    // Universal WhatsApp share link when specific host number is open:
+    return `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
   }
 
   /**

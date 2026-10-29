@@ -1672,18 +1672,43 @@
         });
       }
 
-      // 5. WHATSAPP RSVP WIRING
+      // 5. WHATSAPP RSVP WIRING (With Guest Counter)
+      let rsvpAttendees = 2;
+      const countEl = document.getElementById('rsvpAttendeeCount');
+      const decBtn = document.getElementById('rsvpDecBtn');
+      const incBtn = document.getElementById('rsvpIncBtn');
       const whatsappBtn = document.getElementById('whatsappRsvpBtn');
+
+      if (decBtn && incBtn && countEl) {
+        decBtn.addEventListener('click', () => {
+          if (rsvpAttendees > 1) {
+            rsvpAttendees--;
+            countEl.textContent = String(rsvpAttendees);
+          }
+        });
+        incBtn.addEventListener('click', () => {
+          if (rsvpAttendees < 10) {
+            rsvpAttendees++;
+            countEl.textContent = String(rsvpAttendees);
+          }
+        });
+      }
+
+      function updateWhatsAppUrl() {
+        const cfg = window.WEDDING_CONFIG;
+        const msg = `As-salamu alaykum. With the blessings of Allah, we are pleased to confirm our attendance for the wedding celebrations of Mohd. Ayan Siddiqui & Sumaira Khan on 20–22 November 2026. Attending guests: ${rsvpAttendees}. With best wishes!`;
+        const phone = cfg && cfg.rsvp && cfg.rsvp.phoneNumber ? cfg.rsvp.phoneNumber.replace(/[^0-9]/g, '') : '';
+        const url = phone 
+          ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
+          : `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+        return url;
+      }
+
       if (whatsappBtn) {
         whatsappBtn.addEventListener('click', (e) => {
-          const cfg = window.WEDDING_CONFIG;
-          if (cfg && cfg.features && cfg.features.isRsvpEnabled()) {
-            const url = window.WeddingRSVP.generateWhatsAppUrl(2, cfg);
-            whatsappBtn.href = url;
-          } else {
-            e.preventDefault();
-            showToast('Host RSVP contact number awaiting family confirmation');
-          }
+          const url = updateWhatsAppUrl();
+          whatsappBtn.href = url;
+          showToast(`Opening WhatsApp for ${rsvpAttendees} guest(s)...`);
         });
       }
 
@@ -1711,27 +1736,47 @@
         });
       }
 
-      // 7. AMBIENT MUSIC TOGGLE & SOUNDWAVE
+      // 7. REAL AMBIENT MUSIC TOGGLE & EQUALIZER
       const musicBtn = document.getElementById('musicToggleBtn');
       const soundBars = document.getElementById('soundBars');
       const soundIcon = document.getElementById('soundIcon');
+      const audioElement = document.getElementById('weddingAmbientAudio');
       let isPlaying = false;
 
-      if (musicBtn) {
-        musicBtn.addEventListener('click', () => {
-          isPlaying = !isPlaying;
-          if (isPlaying) {
-            musicBtn.classList.add('bg-secondary', 'text-on-secondary');
-            musicBtn.classList.remove('bg-secondary-fixed/50', 'text-secondary');
-            if (soundBars) { soundBars.classList.remove('hidden'); soundBars.classList.add('flex'); }
-            if (soundIcon) soundIcon.classList.add('hidden');
-            showToast('Now Playing: Raag Yaman on Sitar & Ambient Oud');
+      if (musicBtn && audioElement) {
+        musicBtn.addEventListener('click', async () => {
+          if (!isPlaying) {
+            try {
+              await audioElement.play();
+              isPlaying = true;
+              musicBtn.classList.add('bg-secondary', 'text-on-secondary');
+              musicBtn.classList.remove('bg-secondary-fixed/50', 'text-secondary');
+              if (soundBars) { soundBars.classList.remove('hidden'); soundBars.classList.add('flex'); }
+              if (soundIcon) soundIcon.classList.add('hidden');
+              showToast('Now Playing: Raag Yaman on Sitar');
+            } catch (err) {
+              console.log('Audio autoplay prevented or error:', err);
+              showToast('Tap to enable sound');
+            }
           } else {
+            audioElement.pause();
+            isPlaying = false;
             musicBtn.classList.remove('bg-secondary', 'text-on-secondary');
             musicBtn.classList.add('bg-secondary-fixed/50', 'text-secondary');
             if (soundBars) { soundBars.classList.add('hidden'); soundBars.classList.remove('flex'); }
             if (soundIcon) soundIcon.classList.remove('hidden');
             showToast('Music Paused');
+          }
+        });
+
+        // Traps audio end or system pause
+        audioElement.addEventListener('pause', () => {
+          if (!audioElement.seeking) {
+            isPlaying = false;
+            musicBtn.classList.remove('bg-secondary', 'text-on-secondary');
+            musicBtn.classList.add('bg-secondary-fixed/50', 'text-secondary');
+            if (soundBars) { soundBars.classList.add('hidden'); soundBars.classList.remove('flex'); }
+            if (soundIcon) soundIcon.classList.remove('hidden');
           }
         });
       }
@@ -1772,5 +1817,10 @@
       }
     })();
   </script>
+  <!-- Ambient Wedding Audio (Sitar Raag Yaman) -->
+  <audio id="weddingAmbientAudio" loop preload="auto">
+    <source src="assets/audio/sitar-yaman.mp3" type="audio/mpeg">
+    <source src="assets/audio/sitar-yaman.ogg" type="audio/ogg">
+  </audio>
 </body>
 </html>

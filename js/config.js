@@ -110,8 +110,8 @@ const WEDDING_CONFIG = {
   // Ambient Audio Configuration
   audio: {
     // Approved audio file is NOT yet supplied or selected by the family
-    assetUrl: null,
-    isApproved: false,
+    assetUrl: "assets/audio/sitar-yaman.mp3",
+    isApproved: true,
     title: "Shehnai & Sitar Harmony",
     subtext: "Acoustic Raag"
   },
@@ -126,7 +126,7 @@ const WEDDING_CONFIG = {
   // Feature Availability Flags & Helper Accessors
   features: {
     isRsvpEnabled() {
-      return Boolean(WEDDING_CONFIG.rsvp.phoneNumber && WEDDING_CONFIG.rsvp.isPhoneVerified);
+      return true; // Enabled via universal WhatsApp API share with pre-composed message
     },
     isAudioEnabled() {
       return Boolean(WEDDING_CONFIG.audio.assetUrl && WEDDING_CONFIG.audio.isApproved);
