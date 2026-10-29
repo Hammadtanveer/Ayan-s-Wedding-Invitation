@@ -127,7 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
       toastEl.style.display = 'block';
       duaBtn.style.opacity = '0.6';
       duaBtn.style.pointerEvents = 'none';
-      duaBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">check</span><span>Du’a Offered</span>';
+      duaBtn.replaceChildren();
+      const checkIcon = document.createElement('span');
+      checkIcon.className = 'material-symbols-outlined';
+      checkIcon.style.fontSize = '16px';
+      checkIcon.textContent = 'check';
+      const checkText = document.createElement('span');
+      checkText.textContent = "Du'a Offered";
+      duaBtn.appendChild(checkIcon);
+      duaBtn.appendChild(checkText);
       if (window.WeddingUI && window.WeddingUI.showToast) {
         window.WeddingUI.showToast('Your benediction has been graciously recorded in the guestbook.', 'favorite');
       }

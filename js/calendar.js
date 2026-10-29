@@ -216,56 +216,123 @@
       modal.setAttribute('aria-labelledby', 'calModalTitle');
 
       const events = config && config.events ? config.events : [];
-      let gcalLinksHtml = '';
-      events.forEach((evt, i) => {
-        const gcalUrl = buildGoogleCalendarUrl(evt, config);
-        gcalLinksHtml += `
-          <a href="${gcalUrl}" target="_blank" rel="noopener noreferrer" class="cal-modal-option-btn">
-            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--color-secondary);">event</span>
-            <div style="display: flex; flex-direction: column; text-align: left;">
-              <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-secondary);">${evt.dayLabel}: ${evt.title}</span>
-              <span style="font-size: 10px; color: var(--color-on-surface-variant);">${evt.dateFormatted}</span>
-            </div>
-          </a>
-        `;
+            modal.replaceChildren();
+
+      const card = document.createElement('div');
+      card.className = 'calendar-modal-card';
+
+      // Corner accents
+      ['tl', 'tr', 'bl', 'br'].forEach(pos => {
+        const acc = document.createElement('div');
+        acc.className = `modal-corner-accent modal-corner-${pos}`;
+        acc.setAttribute('aria-hidden', 'true');
+        card.appendChild(acc);
       });
 
-      modal.innerHTML = `
-        <div class="calendar-modal-card">
-          <div class="modal-corner-accent modal-corner-tl" aria-hidden="true"></div>
-          <div class="modal-corner-accent modal-corner-tr" aria-hidden="true"></div>
-          <div class="modal-corner-accent modal-corner-bl" aria-hidden="true"></div>
-          <div class="modal-corner-accent modal-corner-br" aria-hidden="true"></div>
+      // Header row
+      const headerRow = document.createElement('div');
+      headerRow.style.cssText = 'display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(235,193,102,0.25); padding-bottom: 8px; margin-bottom: 12px;';
 
-          <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(235,193,102,0.25); padding-bottom: 8px; margin-bottom: 12px;">
-            <h3 id="calModalTitle" class="font-headline-sm" style="color: var(--color-secondary); font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em;">
-              Add to Calendar
-            </h3>
-            <button id="closeCalModalBtn" type="button" aria-label="Close calendar options" style="background: none; border: none; color: var(--color-secondary); cursor: pointer; display: flex; align-items: center; padding: 4px;">
-              <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
-            </button>
-          </div>
+      const titleEl = document.createElement('h3');
+      titleEl.id = 'calModalTitle';
+      titleEl.className = 'font-headline-sm';
+      titleEl.style.cssText = 'color: var(--color-secondary); font-size: 15px; text-transform: uppercase; letter-spacing: 0.12em; margin: 0;';
+      titleEl.textContent = 'Add to Calendar';
 
-          <p class="font-body-sm" style="font-size: 11px; color: var(--color-on-surface-variant); margin-bottom: 12px; line-height: 1.5;">
-            Exact ceremony timings are awaiting family confirmation. Events are scheduled as all-day reservations.
-          </p>
+      const closeBtn = document.createElement('button');
+      closeBtn.id = 'closeCalModalBtn';
+      closeBtn.type = 'button';
+      closeBtn.setAttribute('aria-label', 'Close calendar options');
+      closeBtn.style.cssText = 'background: none; border: none; color: var(--color-secondary); cursor: pointer; display: flex; align-items: center; padding: 4px;';
+      const closeIcon = document.createElement('span');
+      closeIcon.className = 'material-symbols-outlined';
+      closeIcon.style.fontSize = '20px';
+      closeIcon.textContent = 'close';
+      closeBtn.appendChild(closeIcon);
 
-          <button id="downloadIcsModalBtn" type="button" class="btn-royal-calendar-download">
-            <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
-            <span>Download All Events (.ics file)</span>
-          </button>
+      headerRow.appendChild(titleEl);
+      headerRow.appendChild(closeBtn);
+      card.appendChild(headerRow);
 
-          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin: 12px 0 8px; opacity: 0.5;">
-            <span style="height: 1px; flex: 1; background: var(--color-secondary);"></span>
-            <span style="font-size: 9px; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 0.2em;">or Google Calendar</span>
-            <span style="height: 1px; flex: 1; background: var(--color-secondary);"></span>
-          </div>
+      // Description text
+      const descP = document.createElement('p');
+      descP.className = 'font-body-sm';
+      descP.style.cssText = 'font-size: 11px; color: var(--color-on-surface-variant); margin-bottom: 12px; line-height: 1.5;';
+      descP.textContent = 'Exact ceremony timings are awaiting family confirmation. Events are scheduled as all-day reservations.';
+      card.appendChild(descP);
 
-          <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
-            ${gcalLinksHtml}
-          </div>
-        </div>
-      `;
+      // Primary download .ics button
+      const dlBtn = document.createElement('button');
+      dlBtn.id = 'downloadIcsModalBtn';
+      dlBtn.type = 'button';
+      dlBtn.className = 'cal-modal-option-btn';
+      dlBtn.style.cssText = 'background: linear-gradient(135deg, rgba(235,193,102,0.2), rgba(162,209,187,0.1)); border-color: var(--color-secondary); margin-bottom: 12px;';
+      const dlIcon = document.createElement('span');
+      dlIcon.className = 'material-symbols-outlined';
+      dlIcon.style.cssText = 'font-size: 20px; color: var(--color-secondary);';
+      dlIcon.textContent = 'download';
+      const dlTextCol = document.createElement('div');
+      dlTextCol.style.cssText = 'display: flex; flex-direction: column; text-align: left;';
+      const dlTitle = document.createElement('span');
+      dlTitle.style.cssText = 'font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-secondary);';
+      dlTitle.textContent = 'Download .ics File (All 3 Events)';
+      const dlSub = document.createElement('span');
+      dlSub.style.cssText = 'font-size: 10px; color: var(--color-on-surface-variant);';
+      dlSub.textContent = 'Apple Calendar, Outlook, iOS, Google';
+      dlTextCol.appendChild(dlTitle);
+      dlTextCol.appendChild(dlSub);
+      dlBtn.appendChild(dlIcon);
+      dlBtn.appendChild(dlTextCol);
+      card.appendChild(dlBtn);
+
+      // Section divider
+      const sep = document.createElement('div');
+      sep.style.cssText = 'display: flex; align-items: center; justify-content: center; gap: 8px; margin: 8px 0 12px 0; opacity: 0.5;';
+      const sepLineL = document.createElement('span');
+      sepLineL.style.cssText = 'height: 1px; width: 40px; background: var(--color-outline-variant);';
+      const sepText = document.createElement('span');
+      sepText.style.cssText = 'font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-on-surface-variant);';
+      sepText.textContent = 'or add individually';
+      const sepLineR = document.createElement('span');
+      sepLineR.style.cssText = 'height: 1px; width: 40px; background: var(--color-outline-variant);';
+      sep.appendChild(sepLineL);
+      sep.appendChild(sepText);
+      sep.appendChild(sepLineR);
+      card.appendChild(sep);
+
+      // Google Calendar individual links
+      events.forEach((evt) => {
+        const gcalUrl = buildGoogleCalendarUrl(evt, config);
+        const a = document.createElement('a');
+        a.href = gcalUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'cal-modal-option-btn';
+
+        const evtIcon = document.createElement('span');
+        evtIcon.className = 'material-symbols-outlined';
+        evtIcon.style.cssText = 'font-size: 18px; color: var(--color-secondary);';
+        evtIcon.textContent = 'event';
+
+        const col = document.createElement('div');
+        col.style.cssText = 'display: flex; flex-direction: column; text-align: left;';
+
+        const titleSpan = document.createElement('span');
+        titleSpan.style.cssText = 'font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-secondary);';
+        titleSpan.textContent = `${evt.dayLabel}: ${evt.title}`;
+
+        const dateSpan = document.createElement('span');
+        dateSpan.style.cssText = 'font-size: 10px; color: var(--color-on-surface-variant);';
+        dateSpan.textContent = evt.dateFormatted;
+
+        col.appendChild(titleSpan);
+        col.appendChild(dateSpan);
+        a.appendChild(evtIcon);
+        a.appendChild(col);
+        card.appendChild(a);
+      });
+
+      modal.appendChild(card);
 
       document.body.appendChild(modal);
 
