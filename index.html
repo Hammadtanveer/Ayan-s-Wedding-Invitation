@@ -1717,49 +1717,88 @@
         });
       }
 
-      // 7. REAL AMBIENT MUSIC TOGGLE & EQUALIZER
+      // 7. REAL AMBIENT MUSIC CONTROLLER (AUTOPLAY & SEAMLESS REPLAY LOOP)
       const musicBtn = document.getElementById('musicToggleBtn');
       const soundBars = document.getElementById('soundBars');
       const soundIcon = document.getElementById('soundIcon');
       const audioElement = document.getElementById('weddingAmbientAudio');
       let isPlaying = false;
 
-      if (musicBtn && audioElement) {
-        musicBtn.addEventListener('click', async () => {
-          if (!isPlaying) {
-            try {
-              await audioElement.play();
-              isPlaying = true;
-              musicBtn.classList.add('bg-secondary', 'text-on-secondary');
-              musicBtn.classList.remove('bg-secondary-fixed/50', 'text-secondary');
-              if (soundBars) { soundBars.classList.remove('hidden'); soundBars.classList.add('flex'); }
-              if (soundIcon) soundIcon.classList.add('hidden');
-              showToast('Now Playing: Raag Yaman on Sitar');
-            } catch (err) {
-              console.log('Audio autoplay prevented or error:', err);
-              showToast('Tap to enable sound');
-            }
-          } else {
-            audioElement.pause();
-            isPlaying = false;
-            musicBtn.classList.remove('bg-secondary', 'text-on-secondary');
-            musicBtn.classList.add('bg-secondary-fixed/50', 'text-secondary');
-            if (soundBars) { soundBars.classList.add('hidden'); soundBars.classList.remove('flex'); }
-            if (soundIcon) soundIcon.classList.remove('hidden');
-            showToast('Music Paused');
+      function updateAudioUI(playing) {
+        isPlaying = playing;
+        if (!musicBtn) return;
+        if (playing) {
+          musicBtn.classList.add('bg-secondary', 'text-on-secondary');
+          musicBtn.classList.remove('bg-secondary-fixed/50', 'text-secondary');
+          if (soundBars) { soundBars.classList.remove('hidden'); soundBars.classList.add('flex'); }
+          if (soundIcon) soundIcon.classList.add('hidden');
+        } else {
+          musicBtn.classList.remove('bg-secondary', 'text-on-secondary');
+          musicBtn.classList.add('bg-secondary-fixed/50', 'text-secondary');
+          if (soundBars) { soundBars.classList.add('hidden'); soundBars.classList.remove('flex'); }
+          if (soundIcon) soundIcon.classList.remove('hidden');
+        }
+      }
+
+      async function startAudio(showNotice = false) {
+        if (!audioElement) return false;
+        try {
+          await audioElement.play();
+          updateAudioUI(true);
+          if (showNotice) {
+            showToast('Now Playing: Bismillah');
           }
+          return true;
+        } catch (err) {
+          // Autoplay restricted until first interaction
+          return false;
+        }
+      }
+
+      if (audioElement) {
+        // Enforce loop & explicit restart on track end
+        audioElement.loop = true;
+        audioElement.addEventListener('ended', () => {
+          audioElement.currentTime = 0;
+          audioElement.play().then(() => updateAudioUI(true)).catch(() => {});
         });
 
-        // Traps audio end or system pause
+        audioElement.addEventListener('play', () => updateAudioUI(true));
         audioElement.addEventListener('pause', () => {
-          if (!audioElement.seeking) {
-            isPlaying = false;
-            musicBtn.classList.remove('bg-secondary', 'text-on-secondary');
-            musicBtn.classList.add('bg-secondary-fixed/50', 'text-secondary');
-            if (soundBars) { soundBars.classList.add('hidden'); soundBars.classList.remove('flex'); }
-            if (soundIcon) soundIcon.classList.remove('hidden');
-          }
+          if (!audioElement.seeking) updateAudioUI(false);
         });
+
+        // Autoplay Attempt 1: Immediate on page load
+        startAudio(false).catch(() => {});
+
+        // Autoplay Attempt 2: On first user interaction anywhere (scroll, touch, click, keydown)
+        const autoEvents = ['pointerdown', 'touchstart', 'click', 'scroll', 'keydown'];
+        function triggerFirstInteraction() {
+          if (!isPlaying) {
+            startAudio(false).then((started) => {
+              if (started) {
+                autoEvents.forEach(e => window.removeEventListener(e, triggerFirstInteraction, { capture: true }));
+              }
+            });
+          }
+        }
+        autoEvents.forEach(e => {
+          window.addEventListener(e, triggerFirstInteraction, { capture: true, passive: true });
+        });
+
+        // Manual Header Toggle Button
+        if (musicBtn) {
+          musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!isPlaying) {
+              startAudio(true);
+            } else {
+              audioElement.pause();
+              updateAudioUI(false);
+              showToast('Music Paused');
+            }
+          });
+        }
       }
 
       // 8. FLOATING JASMINE / ROSE PETALS
