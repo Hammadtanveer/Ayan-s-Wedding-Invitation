@@ -1546,6 +1546,18 @@
 
   <!-- Dynamic Scroll Spy & Interaction Controller -->
   <script>
+    // Enforce landing on Section 1 (Home / Welcome) by default
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+    });
+
     (function() {
       const sections = Array.from(document.querySelectorAll('.wedding-section'));
       const navButtons = Array.from(document.querySelectorAll('.nav-tab-btn'));
@@ -1793,11 +1805,16 @@
           window.addEventListener(e, triggerFirstInteraction, { capture: true, passive: true });
         });
 
-        // Tap to Open Button: explicit sound trigger
+        // Tap to Open Button: explicit sound trigger + smooth scroll without URL hash jump
         const tapToOpenBtn = document.getElementById('tapToOpenBtn');
         if (tapToOpenBtn) {
-          tapToOpenBtn.addEventListener('click', () => {
+          tapToOpenBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (!isPlaying) startAudio(true);
+            const coupleSection = document.getElementById('couple');
+            if (coupleSection) {
+              coupleSection.scrollIntoView({ behavior: 'smooth' });
+            }
           });
         }
 
