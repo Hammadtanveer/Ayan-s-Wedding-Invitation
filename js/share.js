@@ -42,10 +42,15 @@
       activeToastTimeout = null;
     }
 
-    toast.innerHTML = `
-      <span class="material-symbols-outlined royal-toast-icon">${iconName}</span>
-      <span class="royal-toast-text">${message}</span>
-    `;
+    toast.replaceChildren();
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'material-symbols-outlined royal-toast-icon';
+    iconSpan.textContent = iconName;
+    const textSpan = document.createElement('span');
+    textSpan.className = 'royal-toast-text';
+    textSpan.textContent = message;
+    toast.appendChild(iconSpan);
+    toast.appendChild(textSpan);
 
     toast.classList.add('visible');
 
