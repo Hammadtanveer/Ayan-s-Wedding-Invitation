@@ -1672,31 +1672,12 @@
         });
       }
 
-      // 5. WHATSAPP RSVP WIRING (With Guest Counter)
-      let rsvpAttendees = 2;
-      const countEl = document.getElementById('rsvpAttendeeCount');
-      const decBtn = document.getElementById('rsvpDecBtn');
-      const incBtn = document.getElementById('rsvpIncBtn');
+      // 5. WHATSAPP RSVP WIRING
       const whatsappBtn = document.getElementById('whatsappRsvpBtn');
 
-      if (decBtn && incBtn && countEl) {
-        decBtn.addEventListener('click', () => {
-          if (rsvpAttendees > 1) {
-            rsvpAttendees--;
-            countEl.textContent = String(rsvpAttendees);
-          }
-        });
-        incBtn.addEventListener('click', () => {
-          if (rsvpAttendees < 10) {
-            rsvpAttendees++;
-            countEl.textContent = String(rsvpAttendees);
-          }
-        });
-      }
-
-      function updateWhatsAppUrl() {
+      function getWhatsAppUrl() {
         const cfg = window.WEDDING_CONFIG;
-        const msg = `As-salamu alaykum. With the blessings of Allah, we are pleased to confirm our attendance for the wedding celebrations of Mohd. Ayan Siddiqui & Sumaira Khan on 20–22 November 2026. Attending guests: ${rsvpAttendees}. With best wishes!`;
+        const msg = `As-salamu alaykum. With the blessings of Allah, we are pleased to confirm our attendance for the wedding celebrations of Mohd. Ayan Siddiqui & Sumaira Khan on 20–22 November 2026. With our warmest prayers and best wishes!`;
         const phone = cfg && cfg.rsvp && cfg.rsvp.phoneNumber ? cfg.rsvp.phoneNumber.replace(/[^0-9]/g, '') : '';
         const url = phone 
           ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
@@ -1706,9 +1687,9 @@
 
       if (whatsappBtn) {
         whatsappBtn.addEventListener('click', (e) => {
-          const url = updateWhatsAppUrl();
+          const url = getWhatsAppUrl();
           whatsappBtn.href = url;
-          showToast(`Opening WhatsApp for ${rsvpAttendees} guest(s)...`);
+          showToast('Opening WhatsApp with your RSVP confirmation...');
         });
       }
 
