@@ -1,0 +1,87 @@
+/**
+ * Stitch MCP Design Tokens: Nocturnal Royal Court
+ * Source: Stitch Project 1730933329537106473 ("Islamic Wedding Invitation")
+ * All values verified directly against Stitch MCP metadata and Screen HTML.
+ */
+
+:root {
+  /* Surface & Background Hierarchy */
+  --color-background: #021710;
+  --color-surface: #021710;
+  --color-surface-dim: #021710;
+  --color-surface-bright: #283d35;
+  --color-surface-container-lowest: #00120b;
+  --color-surface-container-low: #091f18;
+  --color-surface-container: #0e231c;
+  --color-surface-container-high: #192e26;
+  --color-surface-container-highest: #243931;
+  --color-surface-variant: #243931;
+  --color-surface-tint: #a2d1bb;
+
+  /* Primary Emerald Inset & Accent Tones */
+  --color-primary: #a2d1bb;
+  --color-on-primary: #073829;
+  --color-primary-container: #0f3d2e;
+  --color-on-primary-container: #7ba894;
+  --color-primary-fixed: #beedd7;
+  --color-primary-fixed-dim: #a2d1bb;
+  --color-on-primary-fixed: #002116;
+  --color-on-primary-fixed-variant: #234f3f;
+  --color-inverse-primary: #3b6756;
+
+  /* Secondary Antique Brass & Gold Hierarchy */
+  --color-secondary: #ebc166;
+  --color-on-secondary: #402d00;
+  --color-secondary-container: #765700;
+  --color-on-secondary-container: #facf73;
+  --color-secondary-fixed: #ffdf9e;
+  --color-secondary-fixed-dim: #ebc166;
+  --color-secondary-dim: #ebc166;
+  --color-on-secondary-fixed: #261a00;
+  --color-on-secondary-fixed-variant: #5b4300;
+  --color-gold-filigree: #c9a24b;
+
+  /* Tertiary Archival Parchment Tones */
+  --color-tertiary: #cbc6b7;
+  --color-on-tertiary: #333026;
+  --color-tertiary-container: #38362b;
+  --color-on-tertiary-container: #a39f90;
+  --color-tertiary-fixed: #e8e2d2;
+  --color-tertiary-fixed-dim: #cbc6b7;
+  --color-on-tertiary-fixed: #1e1c12;
+  --color-on-tertiary-fixed-variant: #4a473b;
+
+  /* Typographic Ink Colors & High Contrast Substrates */
+  --color-on-surface: #cfe8dc;
+  --color-on-surface-variant: #c0c8c3;
+  --color-on-background: #cfe8dc;
+  --color-inverse-surface: #cfe8dc;
+  --color-inverse-on-surface: #1f352d;
+
+  /* Hairline Outlines & Borders */
+  --color-outline: #8a938d;
+  --color-outline-variant: #414944;
+
+  /* Spacing Scale (from Stitch MCP theme tokens) */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.75rem;    /* 28px */
+  --space-xl: 3rem;       /* 48px */
+  --gutter: 1rem;         /* 16px */
+  --gutter-desktop: 2rem; /* 32px */
+  --margin: 1.25rem;      /* 20px */
+  --margin-desktop: 3rem; /* 48px */
+
+  /* Euclidean Geometry Discipline */
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  /* Shadows & Backlight Halos (from Stitch Screen HTML) */
+  --shadow-scrim: 0 16px 40px rgba(0, 18, 11, 0.85);
+  --shadow-nav: 0 4px 24px rgba(2, 23, 16, 0.5);
+  --shadow-gold-glow: 0 0 24px rgba(235, 193, 102, 0.3);
+  --shadow-gold-hover: 0 0 32px rgba(235, 193, 102, 0.5);
+}
