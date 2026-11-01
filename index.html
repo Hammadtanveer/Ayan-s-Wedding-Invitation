@@ -725,7 +725,7 @@
   <!-- =========================================================================
        MAIN CONTINUOUS SCROLL CONTAINER
        ========================================================================= -->
-  <main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen max-w-md mx-auto md:shadow-[0_0_60px_rgba(116,90,55,0.08)] md:border-x md:border-primary-container/20 relative z-20">
+  <main class="flex flex-col relative w-full pt-16 pb-12 bg-surface min-h-screen max-w-md mx-auto md:shadow-[0_0_60px_rgba(116,90,55,0.08)] md:border-x md:border-primary-container/20 relative z-20">
 
     <!-- =======================================================================
          SECTION 1 — WELCOME (Royal Heirloom Matrimonial Invitation)
@@ -1356,21 +1356,8 @@
 
   </main>
 
-  <!-- =========================================================================
-       FIXED BOTTOM PAGINATION NAVIGATION BAR (Dynamic Scroll-Spy Indicator)
-       ========================================================================= -->
-  <nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-4px_20px_rgba(74,53,43,0.04)] border-t border-outline-variant/15" aria-label="Invitation Section Navigation">
-    <div class="h-16 max-w-xs mx-auto flex items-center justify-between px-gutter-mobile gap-1" id="navTabs">
-      <a href="#welcome" aria-label="Page 1: Welcome" class="nav-tab-btn w-11 h-11 flex items-center justify-center rounded-full font-label-sm transition-all duration-300 bg-secondary text-on-secondary scale-110 shadow-sm" data-target="welcome" data-title="Welcome">1</a>
-      <a href="#couple" aria-label="Page 2: Couple" class="nav-tab-btn w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant font-label-sm transition-all duration-300 hover:text-on-surface" data-target="couple" data-title="Couple">2</a>
-      <a href="#itinerary" aria-label="Page 3: Itinerary" class="nav-tab-btn w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant font-label-sm transition-all duration-300 hover:text-on-surface" data-target="itinerary" data-title="Itinerary">3</a>
-      <a href="#add-to-calendar" aria-label="Page 4: Calendar" class="nav-tab-btn w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant font-label-sm transition-all duration-300 hover:text-on-surface" data-target="add-to-calendar" data-title="Calendar">4</a>
-      <a href="#rsvp-respond" aria-label="Page 5: RSVP" class="nav-tab-btn w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant font-label-sm transition-all duration-300 hover:text-on-surface" data-target="rsvp-respond" data-title="RSVP">5</a>
-    </div>
-  </nav>
-
   <!-- Interactive Feedback Toast -->
-  <div id="appToast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-primary text-on-primary px-space-md py-3 rounded-xl shadow-2xl flex items-center gap-space-sm max-w-xs text-center text-body-sm">
+  <div id="appToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-primary text-on-primary px-space-md py-3 rounded-xl shadow-2xl flex items-center gap-space-sm max-w-xs text-center text-body-sm">
     <span id="appToastText">Notification</span>
   </div>
 
