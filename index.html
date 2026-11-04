@@ -1046,7 +1046,7 @@
             </h2>
             <div class="my-0.5 flex items-center justify-center gap-3">
               <span class="w-10 h-[0.75px] bg-primary-container/60"></span>
-              <span class="text-secondary italic text-[30px] font-normal leading-none select-none" style="font-family: 'Alex Brush', cursive;">&amp;</span>
+              <span class="text-secondary text-[34px] sm:text-[38px] font-normal leading-none select-none" style="font-family: 'Alex Brush', cursive;">&amp;</span>
               <span class="w-10 h-[0.75px] bg-primary-container/60"></span>
             </div>
             <h2 class="text-[42px] sm:text-[48px] text-primary font-normal leading-normal tracking-wide drop-shadow-sm select-none py-0.5" style="font-family: 'Alex Brush', cursive;">
@@ -1473,6 +1473,12 @@
       </div>
   </main>
 
+  <!-- Floating Return to Top Gold Pill -->
+  <button id="scrollToTopBtn" type="button" aria-label="Return to top" class="fixed bottom-6 right-4 sm:right-6 z-40 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface/90 backdrop-blur-md border border-primary-container/60 text-secondary shadow-[0_4px_20px_rgba(116,90,55,0.22)] hover:bg-secondary hover:text-on-secondary hover:border-secondary active:scale-95 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none cursor-pointer touch-manipulation group">
+    <span class="material-symbols-outlined text-[17px] group-hover:-translate-y-0.5 transition-transform">arrow_upward</span>
+    <span class="font-label-sm text-[11px] uppercase tracking-[0.16em] font-semibold">Top</span>
+  </button>
+
   <!-- Interactive Feedback Toast -->
   <div id="appToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-primary text-on-primary px-space-md py-3 rounded-xl shadow-2xl flex items-center gap-space-sm max-w-xs text-center text-body-sm">
     <span id="appToastText">Notification</span>
@@ -1809,6 +1815,25 @@
             }
           });
         }
+      }
+
+      // 7.5 FLOATING RETURN TO TOP GOLD PILL CONTROLLER
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 320) {
+            scrollToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            scrollToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+          } else {
+            scrollToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            scrollToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+          }
+        }, { passive: true });
+
+        scrollToTopBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       }
 
       // 8. FLOATING JASMINE / ROSE PETALS
