@@ -20,7 +20,7 @@
   <!-- Google Fonts: EB Garamond, Manrope, Amiri, Material Symbols -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alex+Brush&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 
   <!-- Tailwind CDN & User Exact Theme Config -->
@@ -987,10 +987,33 @@
           </svg>
         </div>
 
-        <!-- 8-Pointed Star Watermark -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-          <svg class="w-80 h-80 text-primary rotate-gentle" fill="currentColor" viewBox="0 0 100 100">
-            <polygon points="50,0 62,35 98,25 78,58 100,82 65,85 50,100 35,85 0,82 22,58 2,25 38,35"/>
+        <!-- Royal Symmetrical Floral Arabesque Archway Watermark -->
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.07] overflow-hidden">
+          <svg class="w-full h-full text-secondary" viewBox="0 0 320 400" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(160, 200)">
+              <!-- Symmetrical Central Ornamental Medallion -->
+              <circle cx="0" cy="0" r="75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="0" cy="0" r="62" fill="none" stroke="currentColor" stroke-width="0.8"/>
+              <circle cx="0" cy="0" r="48" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              
+              <!-- Symmetrical 8-Petal Palmette Filigree -->
+              <path d="M0 -75 C25 -50 25 -25 0 0 C-25 -25 -25 -50 0 -75 Z" fill="currentColor" opacity="0.4"/>
+              <path d="M0 75 C25 50 25 25 0 0 C-25 25 -25 50 0 75 Z" fill="currentColor" opacity="0.4"/>
+              <path d="M-75 0 C-50 25 -25 25 0 0 C-25 -25 -50 -25 -75 0 Z" fill="currentColor" opacity="0.4"/>
+              <path d="M75 0 C50 25 25 25 0 0 C25 -25 50 -25 75 0 Z" fill="currentColor" opacity="0.4"/>
+              <path d="M-53 -53 C-25 -45 -15 -25 0 0 C-25 -15 -45 -25 -53 -53 Z" fill="currentColor" opacity="0.3"/>
+              <path d="M53 -53 C25 -45 15 -25 0 0 C25 -15 45 -25 53 -53 Z" fill="currentColor" opacity="0.3"/>
+              <path d="M-53 53 C-25 45 -15 25 0 0 C-25 15 -45 25 -53 53 Z" fill="currentColor" opacity="0.3"/>
+              <path d="M53 53 C25 45 15 25 0 0 C25 15 45 25 53 53 Z" fill="currentColor" opacity="0.3"/>
+
+              <!-- Symmetrical Radiating Floral Sprigs -->
+              <circle cx="0" cy="-95" r="4" fill="currentColor"/>
+              <circle cx="0" cy="95" r="4" fill="currentColor"/>
+              <circle cx="-95" cy="0" r="4" fill="currentColor"/>
+              <circle cx="95" cy="0" r="4" fill="currentColor"/>
+              <line x1="0" y1="-140" x2="0" y2="140" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4"/>
+              <line x1="-120" y1="0" x2="120" y2="0" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4"/>
+            </g>
           </svg>
         </div>
 
@@ -1015,15 +1038,17 @@
             You are cordially invited to celebrate the union of
           </p>
 
-          <!-- Names Block -->
+          <!-- Names Block (Modern Romantic Cursive Typography) -->
           <div class="my-space-sm flex flex-col items-center anim-stagger-3">
-            <h2 class="font-headline-lg-mobile text-[32px] sm:text-[36px] text-on-surface font-semibold tracking-wide" style="font-family: 'EB Garamond', serif;">
+            <h2 class="text-[40px] sm:text-[48px] text-primary font-normal leading-tight tracking-wide drop-shadow-sm select-none" style="font-family: 'Alex Brush', cursive;">
               Ayan Siddiqui
             </h2>
-            <div class="my-1 flex items-center justify-center">
-              <span class="font-headline-sm text-secondary italic text-2xl font-normal">&amp;</span>
+            <div class="my-1 flex items-center justify-center gap-3">
+              <span class="w-8 h-[0.75px] bg-primary-container/60"></span>
+              <span class="text-secondary italic text-2xl font-normal" style="font-family: 'Great Vibes', cursive;">&amp;</span>
+              <span class="w-8 h-[0.75px] bg-primary-container/60"></span>
             </div>
-            <h2 class="font-headline-lg-mobile text-[32px] sm:text-[36px] text-on-surface font-semibold tracking-wide" style="font-family: 'EB Garamond', serif;">
+            <h2 class="text-[40px] sm:text-[48px] text-primary font-normal leading-tight tracking-wide drop-shadow-sm select-none" style="font-family: 'Alex Brush', cursive;">
               Sumaira Khan
             </h2>
           </div>
