@@ -619,8 +619,8 @@
        ========================================================================= -->
   <header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(74,53,43,0.03)] border-b border-outline-variant/15">
     <div class="h-16 px-gutter-mobile flex items-center justify-between max-w-md mx-auto">
-      <div class="w-11 h-11 flex items-center justify-start">
-        <a href="#welcome" id="headerBrandBtn" aria-label="Return to top" class="text-primary text-headline-sm font-headline-sm italic tracking-widest opacity-80 hover:opacity-100 transition-opacity active:scale-95">
+      <div class="flex items-center justify-start">
+        <a href="#welcome" id="headerBrandBtn" aria-label="Return to top" class="w-11 h-11 min-w-[44px] min-h-[44px] flex-shrink-0 flex items-center justify-center rounded-full text-primary text-headline-sm font-headline-sm italic tracking-widest opacity-80 hover:opacity-100 hover:bg-secondary-fixed/30 transition-all active:scale-95 touch-manipulation">
           &amp;
         </a>
       </div>
@@ -630,14 +630,14 @@
         </span>
       </div>
       <div class="flex items-center justify-end">
-        <button id="musicToggleBtn" aria-label="Toggle Wedding Music" class="w-11 h-11 flex items-center justify-center rounded-full bg-secondary-fixed/50 hover:bg-secondary-fixed text-secondary transition-all active:scale-95" type="button">
+        <button id="musicToggleBtn" aria-label="Toggle Wedding Music" class="w-11 h-11 min-w-[44px] min-h-[44px] flex-shrink-0 flex items-center justify-center rounded-full bg-secondary-fixed/50 hover:bg-secondary-fixed text-secondary transition-all active:scale-95 shadow-sm touch-manipulation cursor-pointer" type="button">
           <div id="soundBars" class="hidden items-end gap-[2px] h-4 w-4 px-[1px] py-[1px]">
-            <span class="wave-bar w-[2px] bg-secondary rounded-full"></span>
-            <span class="wave-bar w-[2px] bg-secondary rounded-full"></span>
-            <span class="wave-bar w-[2px] bg-secondary rounded-full"></span>
-            <span class="wave-bar w-[2px] bg-secondary rounded-full"></span>
+            <span class="wave-bar w-[2px] bg-current rounded-full"></span>
+            <span class="wave-bar w-[2px] bg-current rounded-full"></span>
+            <span class="wave-bar w-[2px] bg-current rounded-full"></span>
+            <span class="wave-bar w-[2px] bg-current rounded-full"></span>
           </div>
-          <span id="soundIcon" class="material-symbols-outlined text-[19px]">music_note</span>
+          <span id="soundIcon" class="material-symbols-outlined text-[20px]">music_note</span>
         </button>
       </div>
     </div>
