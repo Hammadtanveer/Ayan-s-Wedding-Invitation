@@ -1352,16 +1352,41 @@
           </div>
         </div>
 
-        <!-- Interactive Action Suite -->
-        <div class="w-full flex flex-col gap-space-sm mt-auto pb-space-sm anim-stagger-4">
-          <a id="whatsappRsvpBtn" class="btn-pressable w-full h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center gap-space-sm shadow-md hover:bg-secondary/95 cursor-pointer" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="material-symbols-outlined text-[20px]">chat</span>
-            <span class="font-label-lg text-label-lg tracking-wider">RSVP on WhatsApp</span>
-          </a>
-          <button class="btn-pressable w-full h-14 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center gap-space-sm shadow-sm hover:bg-surface-variant" id="shareInviteBtn" type="button">
-            <span class="material-symbols-outlined text-[20px] text-secondary">share</span>
-            <span class="font-label-lg text-label-lg tracking-wider">Share this invitation</span>
-          </button>
+        <!-- Interactive WhatsApp RSVP Poll Suite (Reference Matched) -->
+        <div class="w-full flex flex-col items-center mt-2 mb-3 anim-stagger-4">
+          
+          <span class="text-label-sm font-label-sm text-secondary tracking-[0.25em] uppercase text-[11px] font-bold mb-1.5">
+            Kindly Respond
+          </span>
+          
+          <h3 class="font-headline-lg-mobile text-[32px] sm:text-[38px] text-primary font-normal leading-tight tracking-wide mb-1 text-center" style="font-family: 'EB Garamond', serif;">
+            Will you <span class="text-secondary italic" style="font-family: 'Alex Brush', cursive; font-size: 38px;">join us?</span>
+          </h3>
+          
+          <p class="font-headline-sm text-[13px] text-tertiary italic text-center max-w-xs mb-5">
+            Your presence and prayers are the most precious gift.
+          </p>
+
+          <!-- Dual Poll Action Buttons -->
+          <div class="w-full flex flex-col gap-3">
+            <!-- OPTION 1: YES, WITH GREAT PLEASURE -->
+            <button id="pollYesBtn" type="button" class="btn-pressable w-full h-14 bg-[#1b4332] hover:bg-[#133023] text-white rounded-full flex items-center justify-center gap-2.5 shadow-[0_4px_16px_rgba(27,67,50,0.28)] border border-[#2d6a4f]/50 transition-all font-body-md text-[15px] font-medium tracking-wide cursor-pointer touch-manipulation active:scale-98">
+              <span class="material-symbols-outlined text-[19px] text-[#52b788]">check_circle</span>
+              <span>Yes, with great pleasure</span>
+            </button>
+
+            <!-- OPTION 2: UNABLE TO ATTEND -->
+            <button id="pollNoBtn" type="button" class="btn-pressable w-full h-14 bg-surface-container/60 hover:bg-surface-container border border-secondary/40 hover:border-secondary text-secondary rounded-full flex items-center justify-center gap-2.5 transition-all font-body-md text-[15px] font-medium tracking-wide cursor-pointer touch-manipulation active:scale-98">
+              <span class="material-symbols-outlined text-[18px] opacity-70">event_busy</span>
+              <span>Unable to attend</span>
+            </button>
+
+            <!-- Secondary Share Action -->
+            <button id="shareInviteBtn" type="button" class="w-full py-2.5 rounded-full text-secondary hover:text-on-surface hover:bg-surface-container-high/60 flex items-center justify-center gap-2 text-[12px] font-label-md uppercase tracking-wider font-semibold transition-all mt-1 cursor-pointer touch-manipulation">
+              <span class="material-symbols-outlined text-[16px]">share</span>
+              <span>Share this invitation</span>
+            </button>
+          </div>
         </div>
 
         <div class="flex items-center justify-center pt-space-md opacity-40">
@@ -1648,24 +1673,38 @@
         });
       }
 
-      // 5. WHATSAPP RSVP WIRING
-      const whatsappBtn = document.getElementById('whatsappRsvpBtn');
+      // 5. WHATSAPP INTERACTIVE RSVP POLL WIRING
+      const pollYesBtn = document.getElementById('pollYesBtn');
+      const pollNoBtn = document.getElementById('pollNoBtn');
 
-      function getWhatsAppUrl() {
+      function openWhatsAppPoll(choice) {
         const cfg = window.WEDDING_CONFIG;
-        const msg = `As-salamu alaykum. With the blessings of Allah, we are pleased to confirm our attendance for the wedding celebrations of Mohd. Ayan Siddiqui & Sumaira Khan on 20–22 November 2026. With our warmest prayers and best wishes!`;
+        let msg = '';
+        if (choice === 'yes') {
+          msg = `As-salamu alaykum! With great pleasure and joyous hearts, we confirm our attendance for the wedding celebrations of Mohd. Ayan Siddiqui & Sumaira Khan (20–22 November 2026). Looking forward to celebrating together! With our warmest prayers and best wishes.`;
+        } else {
+          msg = `As-salamu alaykum. Sending our heartfelt congratulations and prayers to Mohd. Ayan Siddiqui & Sumaira Khan on their auspicious union. Unfortunately, we will be unable to attend in person, but our warmest prayers and dua are with the couple and family!`;
+        }
+
         const phone = cfg && cfg.rsvp && cfg.rsvp.phoneNumber ? cfg.rsvp.phoneNumber.replace(/[^0-9]/g, '') : '';
         const url = phone 
           ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
           : `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
-        return url;
+        
+        window.open(url, '_blank', 'noopener,noreferrer');
       }
 
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', (e) => {
-          const url = getWhatsAppUrl();
-          whatsappBtn.href = url;
-          showToast('Opening WhatsApp with your RSVP confirmation...');
+      if (pollYesBtn) {
+        pollYesBtn.addEventListener('click', () => {
+          showToast('Opening WhatsApp: Attending with pleasure ✨');
+          openWhatsAppPoll('yes');
+        });
+      }
+
+      if (pollNoBtn) {
+        pollNoBtn.addEventListener('click', () => {
+          showToast('Opening WhatsApp: Sending warm prayers 🕊️');
+          openWhatsAppPoll('no');
         });
       }
 
