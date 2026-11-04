@@ -837,20 +837,17 @@
 
 
 
-        <!-- Islamic 8-Pointed Star Lattice Parchment Pattern -->
-        <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.14] z-0">
-          <svg class="w-full h-full text-secondary" xmlns="http://www.w3.org/2000/svg">
+        <!-- Whispering Gold Arabesque Girih Lattice (Luxury Watermark Texture) -->
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.06] z-0">
+          <svg class="w-full h-full text-primary" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="card-girih-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
-                <!-- 8-Pointed Star Interlock -->
-                <polygon points="40,10 49,28 70,20 61,39 70,58 49,50 40,68 31,50 10,58 19,39 10,20 31,28" fill="none" stroke="currentColor" stroke-width="0.9"/>
-                <!-- Inner Central Medallion Circle -->
-                <circle cx="40" cy="39" r="12" fill="none" stroke="#8e4d31" stroke-width="0.8" opacity="0.6"/>
-                <!-- Lattice Connecting Filigrees -->
-                <line x1="40" y1="0" x2="40" y2="10" stroke="currentColor" stroke-width="0.75"/>
-                <line x1="40" y1="68" x2="40" y2="80" stroke="currentColor" stroke-width="0.75"/>
-                <line x1="0" y1="39" x2="10" y2="39" stroke="currentColor" stroke-width="0.75"/>
-                <line x1="70" y1="39" x2="80" y2="39" stroke="currentColor" stroke-width="0.75"/>
+              <pattern id="card-girih-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M30 0 L40 10 L50 10 L60 20 L50 30 L60 40 L50 50 L40 50 L30 60 L20 50 L10 50 L0 40 L10 30 L0 20 L10 10 L20 10 Z" fill="none" stroke="currentColor" stroke-width="0.75"/>
+                <circle cx="30" cy="30" r="9" fill="none" stroke="currentColor" stroke-width="0.6"/>
+                <line x1="30" y1="0" x2="30" y2="21" stroke="currentColor" stroke-width="0.5"/>
+                <line x1="30" y1="39" x2="30" y2="60" stroke="currentColor" stroke-width="0.5"/>
+                <line x1="0" y1="30" x2="21" y2="30" stroke="currentColor" stroke-width="0.5"/>
+                <line x1="39" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="0.5"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#card-girih-pattern)"/>
@@ -913,21 +910,41 @@
           </div>
         </div>
 
-        <!-- Botanical Garden Rose Flourish -->
-        <div class="relative z-10 flex items-center justify-center gap-3 w-48 my-3 opacity-80">
-          <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
-          <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C13.5 5 16 7 19 8C16 9 13.5 11 12 14C10.5 11 8 9 5 8C8 7 10.5 5 12 2Z"/>
-            <circle cx="12" cy="18" r="1.5" fill="#745a37"/>
-          </svg>
-          <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
+        <!-- Royal Matrimonial Presentation Ribbon (Fills the Void with Sacred Elegance) -->
+        <div class="relative z-10 flex flex-col items-center text-center mt-3 mb-2">
+          <span class="font-label-sm text-[10.5px] uppercase tracking-[0.28em] text-secondary font-bold mb-1">
+            Together With Their Families
+          </span>
+          <h2 class="font-headline-lg-mobile text-[26px] sm:text-[30px] text-primary font-normal leading-snug tracking-wide" style="font-family: 'EB Garamond', serif;">
+            Mohd. Ayan &amp; Sumaira
+          </h2>
+          
+          <!-- Delicate Gold Filigree Divider -->
+          <div class="flex items-center justify-center gap-3 w-40 my-2 opacity-75">
+            <span class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></span>
+            <span class="text-secondary text-[10px]">❦</span>
+            <span class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></span>
+          </div>
+
+          <!-- Auspicious Date Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container/80 border border-primary-container/40 shadow-sm text-center">
+            <span class="material-symbols-outlined text-[14px] text-secondary">calendar_today</span>
+            <span class="font-label-sm text-[10.5px] uppercase tracking-[0.16em] text-on-surface font-semibold">20 • 21 • 22 November 2026</span>
+          </div>
         </div>
 
-        <!-- TAP TO OPEN Button (Unlocks the Full Invitation) -->
-        <button type="button" id="tapToOpenBtn" style="z-index: 10;" class="btn-pressable w-full max-w-[250px] py-3.5 px-space-md rounded-full bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary font-label-md uppercase tracking-[0.2em] shadow-[0_6px_20px_rgba(142,77,49,0.28)] hover:shadow-[0_8px_25px_rgba(142,77,49,0.38)] border border-primary-fixed/40 font-semibold text-center mt-2 mb-2 flex items-center justify-center gap-2 group transition-all cursor-pointer">
-          <span>Tap to open</span>
-          <span class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
-        </button>
+        <!-- Opulent Royal Clasp CTA (Unlocks the Full Invitation) -->
+        <div class="relative z-10 flex flex-col items-center mt-3 mb-2 w-full max-w-[250px]">
+          <button type="button" id="tapToOpenBtn" style="z-index: 10;" class="btn-pressable w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-[#71361c] via-[#8e4d31] to-[#71361c] text-[#fef9f1] font-label-md uppercase tracking-[0.22em] shadow-[0_8px_25px_rgba(113,54,28,0.32),inset_0_1px_1.5px_rgba(255,255,255,0.3)] hover:shadow-[0_10px_30px_rgba(113,54,28,0.42)] border border-[#e8c89b]/50 font-semibold text-center flex items-center justify-center gap-2.5 group transition-all cursor-pointer active:scale-98">
+            <span class="material-symbols-outlined text-[18px] text-[#fdebd0] group-hover:-translate-y-0.5 transition-transform">lock_open</span>
+            <span class="text-[12.5px]">Tap to Open</span>
+            <span class="material-symbols-outlined text-[17px] text-[#fdebd0] group-hover:translate-y-1 transition-transform animate-bounce">keyboard_arrow_down</span>
+          </button>
+          
+          <span class="font-label-sm text-[10px] uppercase tracking-[0.28em] text-secondary/70 font-semibold mt-2.5">
+            ✦ The Heirloom Folio ✦
+          </span>
+        </div>
 
 
       </div>
