@@ -836,6 +836,26 @@
 
 
 
+        <!-- Islamic 8-Pointed Star Lattice Parchment Pattern -->
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.14] z-0">
+          <svg class="w-full h-full text-secondary" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="card-girih-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
+                <!-- 8-Pointed Star Interlock -->
+                <polygon points="40,10 49,28 70,20 61,39 70,58 49,50 40,68 31,50 10,58 19,39 10,20 31,28" fill="none" stroke="currentColor" stroke-width="0.9"/>
+                <!-- Inner Central Medallion Circle -->
+                <circle cx="40" cy="39" r="12" fill="none" stroke="#8e4d31" stroke-width="0.8" opacity="0.6"/>
+                <!-- Lattice Connecting Filigrees -->
+                <line x1="40" y1="0" x2="40" y2="10" stroke="currentColor" stroke-width="0.75"/>
+                <line x1="40" y1="68" x2="40" y2="80" stroke="currentColor" stroke-width="0.75"/>
+                <line x1="0" y1="39" x2="10" y2="39" stroke="currentColor" stroke-width="0.75"/>
+                <line x1="70" y1="39" x2="80" y2="39" stroke="currentColor" stroke-width="0.75"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#card-girih-pattern)"/>
+          </svg>
+        </div>
+
         <!-- Double Layered Gold Hairline Arch -->
         <div class="absolute inset-2.5 rounded-t-[178px] rounded-b-2xl border border-[#d4af37]/40 pointer-events-none"></div>
         <div class="absolute inset-3.5 rounded-t-[172px] rounded-b-xl border border-dashed border-[#b8860b]/25 pointer-events-none"></div>
@@ -871,7 +891,7 @@
         </div>
 
         <!-- NEW BESPOKE EMBLEM WITH ANIMATION EFFECT -->
-        <div class="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center my-4">
+        <div class="relative z-10 w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center my-4">
           
           <!-- Outer Rotating Golden Halo 1 -->
           <div class="absolute inset-0 rounded-full border border-dashed border-secondary/40 halo-orbit-slow pointer-events-none"></div>
@@ -893,7 +913,7 @@
         </div>
 
         <!-- Botanical Garden Rose Flourish -->
-        <div class="flex items-center justify-center gap-3 w-48 my-3 opacity-80">
+        <div class="relative z-10 flex items-center justify-center gap-3 w-48 my-3 opacity-80">
           <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
           <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C13.5 5 16 7 19 8C16 9 13.5 11 12 14C10.5 11 8 9 5 8C8 7 10.5 5 12 2Z"/>
@@ -903,7 +923,7 @@
         </div>
 
         <!-- TAP TO OPEN Button (Unlocks the Full Invitation) -->
-        <button type="button" id="tapToOpenBtn" class="btn-pressable w-full max-w-[250px] py-3.5 px-space-md rounded-full bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary font-label-md uppercase tracking-[0.2em] shadow-[0_6px_20px_rgba(142,77,49,0.28)] hover:shadow-[0_8px_25px_rgba(142,77,49,0.38)] border border-primary-fixed/40 font-semibold text-center mt-2 mb-2 flex items-center justify-center gap-2 group transition-all cursor-pointer">
+        <button type="button" id="tapToOpenBtn" style="z-index: 10;" class="btn-pressable w-full max-w-[250px] py-3.5 px-space-md rounded-full bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary font-label-md uppercase tracking-[0.2em] shadow-[0_6px_20px_rgba(142,77,49,0.28)] hover:shadow-[0_8px_25px_rgba(142,77,49,0.38)] border border-primary-fixed/40 font-semibold text-center mt-2 mb-2 flex items-center justify-center gap-2 group transition-all cursor-pointer">
           <span>Tap to open</span>
           <span class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
         </button>
