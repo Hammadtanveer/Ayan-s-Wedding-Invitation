@@ -541,6 +541,53 @@
         display: none !important;
       }
     }
+  
+    /* Royal Emblem Animated Glow & Breathing Float */
+    @keyframes logoPulseGlow {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(142, 77, 49, 0.16), 0 0 0 1px rgba(212, 175, 55, 0.28);
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        box-shadow: 0 18px 45px rgba(142, 77, 49, 0.28), 0 0 25px rgba(212, 175, 55, 0.45);
+        transform: translateY(-4px) scale(1.02);
+      }
+    }
+
+    @keyframes haloSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes haloSpinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    .logo-animated-emblem {
+      animation: logoPulseGlow 4.5s ease-in-out infinite;
+    }
+
+    .halo-orbit-slow {
+      animation: haloSpin 28s linear infinite;
+    }
+
+    .halo-orbit-reverse {
+      animation: haloSpinReverse 36s linear infinite;
+    }
+
+    /* Locked Pages State */
+    .pages-locked {
+      display: none !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pages-unlocked {
+      display: block !important;
+      animation: animFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
   </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-tertiary-fixed islamic-lattice-bg">
@@ -730,7 +777,7 @@
     <!-- =======================================================================
          SECTION 1 — WELCOME (Royal Heirloom Matrimonial Invitation)
          ======================================================================= -->
-    <section id="welcome" class="wedding-section px-margin-mobile pt-3 pb-8" data-section-index="0" data-section-title="Welcome">
+    <section id="welcome" class="wedding-section px-margin-mobile pt-3 pb-8 min-h-[85vh] flex flex-col justify-center items-center" data-section-index="0" data-section-title="Welcome">
       
       <!-- Top Sacred Bismillah & Architectural Arch Header -->
       <div class="w-full flex flex-col items-center text-center mb-3 anim-stagger-1 z-10">
@@ -749,67 +796,67 @@
         </p>
       </div>
 
-      <!-- Main Opulent Arched Invitation Card -->
-      <div class="scroll-reveal w-full max-w-sm bg-surface-container-lowest rounded-t-[190px] rounded-b-3xl shadow-[0_16px_48px_-8px_rgba(74,53,43,0.14),0_2px_12px_rgba(74,53,43,0.06)] px-space-md py-space-lg sm:p-space-lg flex flex-col items-center text-center overflow-hidden border-2 border-primary-container/40 my-auto tactile-card relative">
-        
+      <!-- Main Opulent Arched Cover Card -->
+      <div class="scroll-reveal w-full max-w-sm bg-surface-container-lowest rounded-t-[190px] rounded-b-3xl p-space-md sm:p-space-lg flex flex-col items-center text-center shadow-[0_12px_45px_rgba(116,90,55,0.12)] border border-primary-container/40 relative overflow-hidden anim-stagger-2">
+
         <!-- Hanging Brass Lanterns Flanking the Card Curves -->
-        <div class="absolute -top-1 left-4 pointer-events-none z-20 flex flex-col items-center lantern-animated-left">
+        <div class="absolute -top-1 left-4 pointer-events-none z-20 flex flex-col items-center lantern-sway-left origin-top">
           <div class="w-[1px] h-10 bg-primary-container opacity-80"></div>
           <svg class="w-5 h-4 text-primary" viewBox="0 0 24 18" fill="currentColor">
             <path d="M12 0 L15 7 L21 9 L15 11 L12 18 L9 11 L3 9 L9 7 Z"/>
           </svg>
-          <div class="relative w-5 h-8 bg-surface-container/95 border border-primary-container rounded-lg shadow-sm flex items-center justify-center overflow-hidden">
-            <div class="flame-glow w-2 h-3 rounded-full bg-gradient-to-t from-secondary to-primary-fixed shadow-[0_0_12px_rgba(254,170,135,1)]"></div>
+          <div class="relative w-5 h-8 bg-surface-container/95 border border-primary-container/80 rounded-b-md flex items-center justify-center shadow-sm">
+            <div class="flame-glow w-2 h-3 rounded-full bg-gradient-to-t from-secondary to-primary-container"></div>
           </div>
           <div class="w-[1px] h-3 bg-primary-container opacity-70"></div>
         </div>
 
-        <div class="absolute -top-1 right-4 pointer-events-none z-20 flex flex-col items-center lantern-animated-right">
+        <div class="absolute -top-1 right-4 pointer-events-none z-20 flex flex-col items-center lantern-sway-right origin-top">
           <div class="w-[1px] h-12 bg-primary-container opacity-80"></div>
           <svg class="w-5 h-4 text-primary" viewBox="0 0 24 18" fill="currentColor">
             <path d="M12 0 L15 7 L21 9 L15 11 L12 18 L9 11 L3 9 L9 7 Z"/>
           </svg>
-          <div class="relative w-5 h-8 bg-surface-container/95 border border-primary-container rounded-lg shadow-sm flex items-center justify-center overflow-hidden">
-            <div class="flame-glow w-2 h-3 rounded-full bg-gradient-to-t from-secondary to-primary-fixed shadow-[0_0_12px_rgba(254,170,135,1)]"></div>
+          <div class="relative w-5 h-8 bg-surface-container/95 border border-primary-container/80 rounded-b-md flex items-center justify-center shadow-sm">
+            <div class="flame-glow w-2 h-3 rounded-full bg-gradient-to-t from-secondary to-primary-container"></div>
           </div>
           <div class="w-[1px] h-3 bg-primary-container opacity-70"></div>
         </div>
 
         <!-- Background Watermark: 12-pointed Islamic Mandala -->
-        <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.07] flex items-center justify-center">
+        <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.05] flex items-center justify-center">
           <svg class="w-80 h-80 text-primary rotate-gentle" viewBox="0 0 100 100" fill="currentColor">
             <polygon points="50,0 60,35 95,25 75,55 100,75 65,80 50,100 35,80 0,75 25,55 5,25 40,35"/>
             <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
           </svg>
         </div>
 
-        <!-- Double Layered Gold Hairline Arch & Arabesque Spandrel Accents -->
+        <!-- Double Layered Gold Hairline Arch -->
         <div class="absolute inset-2.5 rounded-t-[178px] rounded-b-2xl border border-primary-container/50 pointer-events-none"></div>
-        <div class="absolute inset-3.5 rounded-t-[172px] rounded-b-xl border border-dashed border-secondary/20 pointer-events-none"></div>
+        <div class="absolute inset-3.5 rounded-t-[172px] rounded-b-xl border border-dashed border-secondary/30 pointer-events-none"></div>
 
-        <!-- Corner Arabesque Filigrees (All 4 Corners) -->
-        <div class="absolute top-3 left-3 w-8 h-8 pointer-events-none text-primary-container/70">
+        <!-- Corner Arabesque Filigrees -->
+        <div class="absolute top-3 left-3 w-8 h-8 pointer-events-none text-primary-container opacity-60">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
             <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
             <circle cx="5" cy="10" r="1.5" fill="currentColor"/>
           </svg>
         </div>
-        <div class="absolute top-3 right-3 w-8 h-8 pointer-events-none text-primary-container/70 scale-x-[-1]">
+        <div class="absolute top-3 right-3 w-8 h-8 pointer-events-none text-primary-container opacity-60">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
             <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
             <circle cx="5" cy="10" r="1.5" fill="currentColor"/>
           </svg>
         </div>
-        <div class="absolute bottom-3 left-3 w-8 h-8 pointer-events-none text-primary-container/70 scale-y-[-1]">
+        <div class="absolute bottom-3 left-3 w-8 h-8 pointer-events-none text-primary-container opacity-60">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
             <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
             <circle cx="5" cy="10" r="1.5" fill="currentColor"/>
           </svg>
         </div>
-        <div class="absolute bottom-3 right-3 w-8 h-8 pointer-events-none text-primary-container/70 scale-[-1]">
+        <div class="absolute bottom-3 right-3 w-8 h-8 pointer-events-none text-primary-container opacity-60">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M2 2 C12 4, 22 14, 24 24 M2 2 C4 12, 14 22, 24 24"/>
             <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
@@ -817,59 +864,30 @@
           </svg>
         </div>
 
-        <!-- Royal Monogram Seal Medallion -->
-        <div class="relative w-28 h-28 flex items-center justify-center mt-space-md mb-2 anim-stagger-1">
-          <!-- Sunburst Radiant Star Geometry -->
-          <svg class="absolute inset-0 w-full h-full text-primary-container rotate-gentle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
-            <polygon points="50,2 63,35 98,50 63,65 50,98 37,65 2,50 37,35" stroke="#745a37" stroke-width="1.4"></polygon>
-            <polygon points="50,14 60,38 86,50 60,62 50,86 40,62 14,50 40,38" stroke="#8e4d31" stroke-width="0.9" opacity="0.7"></polygon>
-            <circle cx="50" cy="50" r="26" stroke-dasharray="2 3" stroke="#745a37" stroke-width="1"></circle>
-          </svg>
-          <div class="w-16 h-16 rounded-full bg-surface-container/70 border border-primary-container/60 flex items-center justify-center shadow-inner">
-            <span class="font-headline-lg text-[26px] text-primary tracking-widest font-normal select-none" style="font-family: 'EB Garamond', serif;">
-              A &amp; S
-            </span>
+        <!-- NEW BESPOKE EMBLEM WITH ANIMATION EFFECT -->
+        <div class="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center my-4">
+          
+          <!-- Outer Rotating Golden Halo 1 -->
+          <div class="absolute inset-0 rounded-full border border-dashed border-secondary/40 halo-orbit-slow pointer-events-none"></div>
+          
+          <!-- Outer Rotating Golden Halo 2 (Reverse) -->
+          <div class="absolute inset-3 rounded-full border border-primary-container/40 halo-orbit-reverse pointer-events-none"></div>
+
+          <!-- Pulsing Ambient Gold Backlight Glow -->
+          <div class="absolute inset-6 rounded-full bg-gradient-to-tr from-secondary/20 via-primary-fixed/25 to-tertiary-fixed/20 blur-xl pointer-events-none"></div>
+
+          <!-- Circular Logo Image Container with Shimmer / Floating Pulse -->
+          <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full p-1 bg-gradient-to-br from-[#d4af37] via-[#f7e7ce] to-[#8e4d31] shadow-[0_8px_30px_rgba(116,90,55,0.22)] logo-animated-emblem overflow-hidden">
+            <img 
+              src="assets/images/ayan-sumaira-logo.jpg" 
+              alt="Ayan & Sumaira Wedding Monogram" 
+              class="w-full h-full object-cover rounded-full select-none"
+            />
           </div>
         </div>
 
-        <!-- Subtle "Together with their families" line -->
-        <p class="font-headline-sm text-[13px] text-tertiary italic tracking-wider mb-1 anim-stagger-2">
-          Together with their families
-        </p>
-
-        <!-- Main Title / Couple Names -->
-        <div class="my-1 anim-stagger-2">
-          <h2 class="font-headline-lg-mobile text-[25px] sm:text-[28px] text-on-surface font-semibold tracking-wide leading-tight" style="font-family: 'EB Garamond', serif;">
-            Mohd. Ayan Siddiqui
-          </h2>
-          <div class="flex items-center justify-center gap-2 my-0.5">
-            <span class="w-6 h-[0.75px] bg-primary-container"></span>
-            <span class="font-headline-sm text-secondary italic text-lg">&amp;</span>
-            <span class="w-6 h-[0.75px] bg-primary-container"></span>
-          </div>
-          <h2 class="font-headline-lg-mobile text-[25px] sm:text-[28px] text-on-surface font-semibold tracking-wide leading-tight" style="font-family: 'EB Garamond', serif;">
-            Sumaira Khan
-          </h2>
-        </div>
-
-        <!-- Invitation Calligraphy Subtitle -->
-        <p class="font-headline-sm text-[15px] text-secondary italic font-normal mt-1 mb-2 anim-stagger-3" style="font-family: 'EB Garamond', serif;">
-          Cordially invite you to grace their wedding celebrations
-        </p>
-
-        <!-- Ceremonial Dates & Venue Pill Badge -->
-        <div class="inline-flex flex-col items-center py-1.5 px-4 rounded-xl bg-surface-container/80 border border-primary-container/50 shadow-sm my-2 anim-stagger-3">
-          <div class="flex items-center gap-1.5 text-secondary font-label-md text-[11px] font-bold tracking-widest uppercase">
-            <span class="material-symbols-outlined text-[14px]">calendar_month</span>
-            <span>20 &bull; 21 &bull; 22 November 2026</span>
-          </div>
-          <span class="text-on-surface-variant text-[11px] font-medium tracking-wide">
-            Kamal Palace, Hasanpur &bull; Evergreen, Seohara
-          </span>
-        </div>
-
-        <!-- Botanical Garden Rose & Jasmine Flourish -->
-        <div class="flex items-center justify-center gap-3 w-48 my-2 opacity-80 anim-stagger-3">
+        <!-- Botanical Garden Rose Flourish -->
+        <div class="flex items-center justify-center gap-3 w-48 my-3 opacity-80">
           <div class="h-[0.75px] flex-1 bg-gradient-to-r from-transparent via-primary-container to-secondary"></div>
           <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C13.5 5 16 7 19 8C16 9 13.5 11 12 14C10.5 11 8 9 5 8C8 7 10.5 5 12 2Z"/>
@@ -878,11 +896,11 @@
           <div class="h-[0.75px] flex-1 bg-gradient-to-l from-transparent via-primary-container to-secondary"></div>
         </div>
 
-        <!-- TAP TO OPEN Button (Elevated with Gold Gradient & Glow) -->
-        <a href="#couple" id="tapToOpenBtn" class="btn-pressable w-full max-w-[240px] py-3.5 px-space-md rounded-full bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary font-label-md uppercase tracking-[0.2em] shadow-[0_6px_20px_rgba(142,77,49,0.28)] hover:shadow-[0_8px_25px_rgba(142,77,49,0.38)] border border-primary-fixed/40 font-semibold text-center mt-2 mb-2 anim-stagger-4 flex items-center justify-center gap-2 group transition-all">
+        <!-- TAP TO OPEN Button (Unlocks the Full Invitation) -->
+        <button type="button" id="tapToOpenBtn" class="btn-pressable w-full max-w-[250px] py-3.5 px-space-md rounded-full bg-gradient-to-r from-secondary to-on-secondary-container text-on-secondary font-label-md uppercase tracking-[0.2em] shadow-[0_6px_20px_rgba(142,77,49,0.28)] hover:shadow-[0_8px_25px_rgba(142,77,49,0.38)] border border-primary-fixed/40 font-semibold text-center mt-2 mb-2 flex items-center justify-center gap-2 group transition-all cursor-pointer">
           <span>Tap to open</span>
           <span class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
-        </a>
+        </button>
 
         <!-- Miniature Wax Seal Stamp Accent -->
         <div class="flex items-center justify-center gap-1.5 text-primary opacity-60 text-[11px] mt-1 select-none">
@@ -891,14 +909,10 @@
         </div>
       </div>
 
-      <!-- Scroll Indicator Prompt -->
-      <div class="flex flex-col items-center mt-3 opacity-60 anim-stagger-4">
-        <span class="font-label-sm text-[10px] uppercase tracking-[0.2em] text-tertiary">Scroll to explore</span>
-        <span class="material-symbols-outlined text-sm text-secondary animate-bounce mt-0.5">expand_more</span>
-      </div>
-
     </section>
 
+    <!-- LOCKED UNTIL USER TAPS TO OPEN -->
+    <div id="invitationFolio" class="pages-locked">
     <!-- =======================================================================
          SECTION 2 — COUPLE (User Exact Code)
          ======================================================================= -->
@@ -1406,6 +1420,7 @@
     </section>
 
 
+      </div>
   </main>
 
   <!-- Interactive Feedback Toast -->
@@ -1492,6 +1507,20 @@
       }, observerOptions);
 
       sections.forEach(section => sectionObserver.observe(section));
+
+      // Ensure any direct anchor navigation unlocks the folio if needed
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          const target = anchor.getAttribute('href');
+          if (target && target !== '#welcome') {
+            const folio = document.getElementById('invitationFolio');
+            if (folio && folio.classList.contains('pages-locked')) {
+              folio.classList.remove('pages-locked');
+              folio.classList.add('pages-unlocked');
+            }
+          }
+        });
+      });
 
       // 2. SCROLL REVEAL OBSERVER (Elements animate in as they scroll into view)
       const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -1678,16 +1707,42 @@
           window.addEventListener(e, triggerFirstInteraction, { capture: true, passive: true });
         });
 
-        // Tap to Open Button: explicit sound trigger + smooth scroll without URL hash jump
+        // Tap to Open Button: UNLOCK INVITATION, START AUDIO & SMOOTH SCROLL
         const tapToOpenBtn = document.getElementById('tapToOpenBtn');
+        const folioContainer = document.getElementById('invitationFolio');
+
+        function unlockInvitation() {
+          if (folioContainer && folioContainer.classList.contains('pages-locked')) {
+            folioContainer.classList.remove('pages-locked');
+            folioContainer.classList.add('pages-unlocked');
+            
+            // Re-observe revealed elements in freshly unlocked folio
+            const newReveals = folioContainer.querySelectorAll('.scroll-reveal');
+            newReveals.forEach(el => revealObserver.observe(el));
+            
+            // Re-observe sections for scroll spy
+            const newSections = folioContainer.querySelectorAll('.wedding-section');
+            newSections.forEach(s => sectionObserver.observe(s));
+          }
+        }
+
         if (tapToOpenBtn) {
           tapToOpenBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            // 1. Play music
             if (!isPlaying) startAudio(true);
-            const coupleSection = document.getElementById('couple');
-            if (coupleSection) {
-              coupleSection.scrollIntoView({ behavior: 'smooth' });
-            }
+            
+            // 2. Unlock all pages
+            unlockInvitation();
+            
+            // 3. Smoothly scroll to Couple section
+            setTimeout(() => {
+              const coupleSection = document.getElementById('couple');
+              if (coupleSection) {
+                coupleSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 60);
           });
         }
 
