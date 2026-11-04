@@ -1705,10 +1705,9 @@
           msg = `As-salamu alaykum. Sending our heartfelt congratulations and prayers to Mohd. Ayan Siddiqui & Sumaira Khan on their auspicious union. Unfortunately, we will be unable to attend in person, but our warmest prayers and dua are with the couple and family!`;
         }
 
-        const phone = cfg && cfg.rsvp && cfg.rsvp.phoneNumber ? cfg.rsvp.phoneNumber.replace(/[^0-9]/g, '') : '';
-        const url = phone 
-          ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
-          : `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+        const rawPhone = (cfg && cfg.rsvp && cfg.rsvp.phoneNumber ? cfg.rsvp.phoneNumber : '919720168580').replace(/[^0-9]/g, '');
+        const phone = rawPhone.length === 10 ? '91' + rawPhone : rawPhone;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
         
         window.open(url, '_blank', 'noopener,noreferrer');
       }

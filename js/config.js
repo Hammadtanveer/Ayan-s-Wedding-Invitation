@@ -100,8 +100,8 @@ const WEDDING_CONFIG = {
     hostName: "Haji Iqtadar Ahmad",
     // Authorized WhatsApp phone number is NOT yet supplied by the family
     // Value remains null to prevent exposing false contacts or placeholder routing
-    phoneNumber: null,
-    isPhoneVerified: false,
+    phoneNumber: "919720168580",
+    isPhoneVerified: true,
     defaultAttendees: 2,
     minAttendees: 1,
     maxAttendees: 10
