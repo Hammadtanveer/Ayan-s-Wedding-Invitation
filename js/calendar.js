@@ -67,7 +67,7 @@
       throw new Error('[Calendar] Missing events configuration.');
     }
 
-    const couple = config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Mohd. Ayan Siddiqui & Sumaira Khan';
+    const couple = config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Ayan Siddiqui & Sumaira Khan';
     const nowIsoUtc = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
     const lines = [
@@ -112,7 +112,7 @@
    * @returns {string}
    */
   function buildGoogleCalendarUrl(evt, config = (typeof window !== 'undefined' ? window.WEDDING_CONFIG : null)) {
-    const couple = config && config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Mohd. Ayan Siddiqui & Sumaira Khan';
+    const couple = config && config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Ayan Siddiqui & Sumaira Khan';
     const title = `Wedding: ${couple} — ${evt.title}`;
     const dtStart = formatIcsDate(evt.isoDate);
     const dtEnd = formatIcsDate(getNextDayIso(evt.isoDate));

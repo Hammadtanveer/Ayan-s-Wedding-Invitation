@@ -16,7 +16,7 @@
 const WEDDING_CONFIG = {
   // Couple & Family Registry
   couple: {
-    groom: "Mohd. Ayan Siddiqui",
+    groom: "Ayan Siddiqui",
     bride: "Sumaira Khan",
     monogram: "A & S",
     families: {
@@ -118,8 +118,8 @@ const WEDDING_CONFIG = {
 
   // Native Share Configuration
   share: {
-    title: "Wedding Invitation — Mohd. Ayan Siddiqui & Sumaira Khan",
-    text: "Together with their families, Mohd. Ayan Siddiqui and Sumaira Khan request the honour of your auspicious presence to celebrate their wedding on 20–22 November 2026.",
+    title: "Wedding Invitation — Ayan Siddiqui & Sumaira Khan",
+    text: "Together with their families, Ayan Siddiqui and Sumaira Khan request the honour of your auspicious presence to celebrate their wedding on 20–22 November 2026.",
     url: null // Evaluated dynamically at runtime from window.location.href
   },
 

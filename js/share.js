@@ -66,7 +66,7 @@
    */
   async function triggerShare(config = (typeof window !== 'undefined' ? window.WEDDING_CONFIG : null)) {
     const shareTitle = config && config.share ? config.share.title : document.title;
-    const shareText = config && config.share ? config.share.text : 'Royal Wedding Invitation — Mohd. Ayan Siddiqui & Sumaira Khan';
+    const shareText = config && config.share ? config.share.text : 'Royal Wedding Invitation — Ayan Siddiqui & Sumaira Khan';
     const shareUrl = window.location.href;
 
     // 1. Try Native Web Share API

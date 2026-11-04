@@ -36,7 +36,7 @@
    * @returns {string}
    */
   function buildRsvpMessage(attendeeCount, config) {
-    const couple = config && config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Mohd. Ayan Siddiqui & Sumaira Khan';
+    const couple = config && config.couple ? `${config.couple.groom} & ${config.couple.bride}` : 'Ayan Siddiqui & Sumaira Khan';
     const count = Math.max(1, Math.min(10, parseInt(attendeeCount, 10) || 1));
     return `Assalamu Alaikum! We are honored to confirm our presence at the royal wedding of ${couple}. With our warmest prayers and best wishes!`;
   }
