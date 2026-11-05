@@ -72,11 +72,11 @@ const WEDDING_CONFIG = {
       isoDate: "2026-11-21",
       venueName: "Evergreen Banquet Hall",
       venueArea: "Seohara, Distt. Bijnor",
-      streetAddress: null,
+      streetAddress: "Seohara, Distt. Bijnor, Uttar Pradesh",
       times: null,
       isTimeConfirmed: false,
-      mapUrl: null,
-      isMapVerified: false
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Evergreen+Banquet+Hall+Seohara",
+      isMapVerified: true
     },
     {
       id: "event-3",
@@ -87,11 +87,11 @@ const WEDDING_CONFIG = {
       isoDate: "2026-11-22",
       venueName: "Mangal Lipi Farm House",
       venueArea: "Seohara-Moradabad Road",
-      streetAddress: null,
+      streetAddress: "Seohara-Moradabad Road, Uttar Pradesh",
       times: null,
       isTimeConfirmed: false,
-      mapUrl: null,
-      isMapVerified: false
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Mangal+Lipi+Farm+House+Seohara",
+      isMapVerified: true
     }
   ],
 
